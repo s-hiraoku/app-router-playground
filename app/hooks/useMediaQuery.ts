@@ -20,15 +20,14 @@ function useMediaQuery(query: string): boolean {
     const documentChangeHandler = () => setMatches(mediaQueryList.matches);
 
     // イベントリスナーを追加
-    mediaQueryList.addListener(documentChangeHandler);
+    mediaQueryList.addEventListener('change', documentChangeHandler);
 
     // コンポーネントのアンマウント時にイベントリスナーを削除
     return () => {
-      mediaQueryList.removeListener(documentChangeHandler);
+      mediaQueryList.removeEventListener('change', documentChangeHandler);
     };
   }, [query]);
 
   return matches;
 }
-
 export default useMediaQuery;
