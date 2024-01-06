@@ -1,8 +1,9 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 
-function useMediaQuery(query: string): boolean {
-  // ウィンドウオブジェクトがない場合（サーバーサイドレンダリングなど）は、
-  // デフォルトでfalseを返す
+export const useMediaQuery = (query: string): boolean => {
+  // ウィンドウオブジェクトがない場合は、デフォルトでfalseを返す
   const [matches, setMatches] = useState(() => {
     if (typeof window !== 'undefined') {
       return window.matchMedia(query).matches;
@@ -29,5 +30,4 @@ function useMediaQuery(query: string): boolean {
   }, [query]);
 
   return matches;
-}
-export default useMediaQuery;
+};
