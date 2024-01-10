@@ -12,7 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const appearance = useMediaQuery('(prefers-color-scheme: dark)')? 'dark' : 'light';
+  const appearance = useMediaQuery('(prefers-color-scheme: dark)') ? 'dark' : 'light';
+  return (
     <html lang="en">
       <body className={inter.className}>
         <Theme appearance={appearance}>{children}</Theme>
