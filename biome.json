@@ -6,7 +6,10 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "all": true,
+      "nursery": {
+        "noNodejsModules": "off"
+      }
     }
   },
   "javascript": {
@@ -18,5 +21,24 @@
       "semicolons": "asNeeded",
       "quoteStyle": "single"
     }
-  }
+  },
+  "overrides": [
+    {
+      "include": [
+        "next.config.js",
+        "layout.tsx",
+        "page.tsx",
+        "loading.tsx",
+        "error.tsx",
+        "not-found.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    }
+  ]
 }
