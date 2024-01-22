@@ -1,1 +1,0 @@
-export { AutoThemeWrapper } from "./AutoThemeWrapper";
