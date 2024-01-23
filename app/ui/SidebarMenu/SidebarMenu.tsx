@@ -3,6 +3,7 @@ import styles from "./SidebarMenu.module.css";
 type Props = {};
 
 export const SidebarMenu: React.FC<Props> = ({}) => {
+  const [];
   return (
     <div className={styles.sidebar}>
       <a href="#" className={styles.menuItem}>

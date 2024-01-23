@@ -98,7 +98,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ```sh
 ├── app
-│   ├── components         # 共有コンポーネント
+│   ├── ui                 # 共有コンポーネントなど
 │   ├── hooks              # 共有フック
 │   ├── providers          # アプリケーションのプロバイダー
 │   └── routes             # ルーティング設定
