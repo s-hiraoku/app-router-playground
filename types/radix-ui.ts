@@ -1,1 +1,1 @@
-import ThemeOptions from '@radix-ui/themes';
+import ThemeOptions from "@radix-ui/themes";
