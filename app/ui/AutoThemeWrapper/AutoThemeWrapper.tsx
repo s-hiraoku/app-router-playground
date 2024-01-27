@@ -1,7 +1,7 @@
 "use client";
 import { PropsWithChildren } from "react";
 import { useDarkMode } from "@/app/hooks";
-import { Theme } from "@radix-ui/themes";
+import { Theme, ThemePanel } from "@radix-ui/themes";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -12,5 +12,15 @@ export const AutoThemeWrapper: React.FC<PropsWithChildren<Props>> = ({
   children,
 }) => {
   const appearance = useDarkMode();
-  return <Theme appearance={appearance}>{children}</Theme>;
+  return (
+    <Theme
+      appearance={appearance}
+      accentColor="mint"
+      grayColor="gray"
+      panelBackground="solid"
+    >
+      {children}
+      <ThemePanel />
+    </Theme>
+  );
 };
