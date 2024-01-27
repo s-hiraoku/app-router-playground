@@ -43,6 +43,7 @@
     "eslint-plugin-storybook": "^0.6.15",
     "happy-dom": "^13.2.1",
     "prettier": "^3.2.4",
+    "sass": "^1.70.0",
     "storybook": "^7.6.10",
     "typescript": "^5",
     "vitest": "^1.2.1"
