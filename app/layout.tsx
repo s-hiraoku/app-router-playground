@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AutoThemeWrapper } from "@/app/ui/AutoThemeWrapper";
 import "@/app/ui/global.css";
+import { Provider } from "jotai";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AutoThemeWrapper>{children}</AutoThemeWrapper>
+        <Provider>
+          <AutoThemeWrapper>{children}</AutoThemeWrapper>
+        </Provider>
       </body>
     </html>
   );
