@@ -3,6 +3,7 @@
   height: 100dvh;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: margin-left 0.3s ease-in-out;
+  overflow-y: auto;
 
   &.open {
     margin-left: -250px;

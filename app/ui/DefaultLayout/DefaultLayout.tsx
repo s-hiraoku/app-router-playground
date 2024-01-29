@@ -17,12 +17,12 @@ export const DefaultLayout: React.FC<PropsWithChildren<{}>> = ({
   }, [toggle]);
 
   return (
-    <>
-      <Header onHamburgerClick={handleHamburgerClick} />
-      <Flex>
-        <Sidebar isOpen={isOpen ?? true} />
+    <div className={styles.container}>
+      <Sidebar isOpen={isOpen ?? true} />
+      <Flex className={styles.wrapper}>
+        <Header onHamburgerClick={handleHamburgerClick} />
         <main className={styles.mainContent}>{children}</main>
       </Flex>
-    </>
+    </div>
   );
 };

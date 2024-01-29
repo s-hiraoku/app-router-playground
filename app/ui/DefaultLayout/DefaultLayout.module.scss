@@ -1,4 +1,16 @@
+.container {
+  display: flex;
+  height: 100dvh;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 .mainContent {
   padding: 8px;
   width: 100%;
+  overflow-y: auto;
 }
