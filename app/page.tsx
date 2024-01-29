@@ -1,11 +1,9 @@
-import { Sidebar } from "@/app/ui/Sidebar";
-import { Header } from "@/app/ui/Header";
+import { DefaultLayout } from "./ui/DefaultLayout";
 
 export default function Home() {
   return (
-    <main>
-      <Header />
-      <Sidebar />
-    </main>
+    <DefaultLayout>
+      <h1>Home</h1>
+    </DefaultLayout>
   );
 }
