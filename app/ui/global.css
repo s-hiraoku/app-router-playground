@@ -12,3 +12,16 @@ ul {
 li {
   list-style: none;
 }
+
+:root {
+  --space-x1: 8px;
+  --space-x2: 16px;
+  --space-x3: 24px;
+  --space-x4: 32px;
+  --space-x5: 40px;
+  --space-x6: 48px;
+  --space-x7: 56px;
+  --space-x8: 64px;
+  --space-x9: 72px;
+  --space-x10: 80px;
+}
