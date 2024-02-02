@@ -4,22 +4,14 @@ import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { Box, Button, Flex } from "@radix-ui/themes";
 import { useCallback } from "react";
 
-type Props = { onHamburgerClick: () => void };
+type Props = {};
 
-export const Header: React.FC<Props> = ({ onHamburgerClick }) => {
-  const handleClick = useCallback(() => {
-    onHamburgerClick();
-  }, [onHamburgerClick]);
-
+export const Header: React.FC<Props> = ({}) => {
   return (
     <header className={styles.header}>
       <Flex align="center" justify="between" p="2">
         <Box>
-          <Button
-            variant="ghost"
-            onClick={handleClick}
-            className={styles.hamburgerButton}
-          >
+          <Button variant="ghost" className={styles.hamburgerButton}>
             <HamburgerMenuIcon width="18" height="18" />
           </Button>
         </Box>

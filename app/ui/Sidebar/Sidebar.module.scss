@@ -1,19 +1,24 @@
 .sidebar {
-  width: 250px;
+  padding: var(--space-x1) var(--space-x1);
+  width: 256px;
   height: 100dvh;
   box-shadow: 2px 0 3px rgba(0, 0, 0, 0.2);
   transition: margin-left 0.3s ease-in-out;
   overflow-y: auto;
 
   &.open {
-    margin-left: -250px;
+    margin-left: -200px;
   }
 
   ul {
-    padding: 20px;
+    padding: 0 var(--space-x2);
 
     li {
-      margin-bottom: 10px;
+      margin-top: var(--space-x1);
     }
   }
+}
+
+.controller {
+  padding: var(--space-x1) var(--space-x1);
 }

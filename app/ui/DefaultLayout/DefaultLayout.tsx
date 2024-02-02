@@ -10,17 +10,11 @@ import { Flex } from "@radix-ui/themes";
 export const DefaultLayout: React.FC<PropsWithChildren<{}>> = ({
   children,
 }) => {
-  const [isOpen, toggle] = useAtom(isSidebarOpenAtom);
-
-  const handleHamburgerClick = useCallback(() => {
-    toggle();
-  }, [toggle]);
-
   return (
     <div className={styles.container}>
-      <Sidebar isOpen={isOpen ?? true} />
+      <Sidebar />
       <Flex className={styles.wrapper}>
-        <Header onHamburgerClick={handleHamburgerClick} />
+        <Header />
         <main className={styles.mainContent}>{children}</main>
       </Flex>
     </div>
