@@ -2,15 +2,15 @@ import { Button } from "@radix-ui/themes";
 import { ReactNode, PropsWithChildren, ComponentType } from "react";
 
 type Props = {
-  icon?: ComponentType;
+  icon?: ReactNode;
   prefix?: ReactNode;
   suffix?: ReactNode;
-  active: boolean;
-  disabled: boolean;
+  active?: boolean;
+  disabled?: boolean;
 };
 
 export const MenuItem: React.FC<PropsWithChildren<Props>> = ({
-  icon: Icon,
+  icon,
   children,
   prefix,
   suffix,
@@ -20,7 +20,7 @@ export const MenuItem: React.FC<PropsWithChildren<Props>> = ({
   return (
     <li>
       <Button disabled={disabled}>
-        {Icon && <Icon />}
+        {icon}
         {prefix}
         {children}
         {suffix}
