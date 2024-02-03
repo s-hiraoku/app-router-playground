@@ -7,6 +7,7 @@ type Props = {
   suffix?: ReactNode;
   active?: boolean;
   disabled?: boolean;
+  onClick?: () => void;
 };
 
 export const MenuItem: React.FC<PropsWithChildren<Props>> = ({
@@ -16,10 +17,11 @@ export const MenuItem: React.FC<PropsWithChildren<Props>> = ({
   suffix,
   active = false,
   disabled = false,
+  onClick,
 }) => {
   return (
     <li>
-      <Button disabled={disabled}>
+      <Button disabled={disabled} onClick={onClick} variant="soft">
         {icon}
         {prefix}
         {children}

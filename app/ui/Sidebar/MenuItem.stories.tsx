@@ -31,7 +31,7 @@ WithSuffix.args = {
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   ...Default.args,
-  icon: GitHubLogoIcon,
+  icon: <GitHubLogoIcon />,
 };
 
 export const Active = Template.bind({});
