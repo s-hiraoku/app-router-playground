@@ -2,8 +2,8 @@ type Props = {};
 
 export const Menu: React.FC<Props> = () => {
   return (
-    <nav>
+    <menu>
       <h1>Menu</h1>
-    </nav>
+    </menu>
   );
 };

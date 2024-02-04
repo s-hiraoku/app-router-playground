@@ -3,11 +3,11 @@
   width: 256px;
   height: 100dvh;
   box-shadow: 2px 0 3px rgba(0, 0, 0, 0.2);
-  transition: margin-left 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
   overflow-y: auto;
 
   &.open {
-    margin-left: -200px;
+    width: 40px;
   }
 
   ul {
