@@ -2,7 +2,6 @@
 import styles from "./Header.module.scss";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { Box, Button, Flex } from "@radix-ui/themes";
-import { useCallback } from "react";
 
 type Props = {};
 
