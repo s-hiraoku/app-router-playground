@@ -43,6 +43,7 @@
     "eslint-plugin-storybook": "^0.6.15",
     "happy-css-modules": "^2.1.2",
     "happy-dom": "^13.2.1",
+    "markuplint": "^4.0.0",
     "prettier": "^3.2.4",
     "sass": "^1.70.0",
     "storybook": "^7.6.10",
