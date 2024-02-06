@@ -1,19 +1,7 @@
+@import "./reset.css";
 @import "~@radix-ui/themes/styles.css";
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-li {
-  list-style: none;
-}
-
-:root {
+: root {
   --space-x1: 8px;
   --space-x2: 16px;
   --space-x3: 24px;
