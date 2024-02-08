@@ -16,7 +16,7 @@ export const AutoThemeWrapper: React.FC<PropsWithChildren<Props>> = ({
     <Theme
       appearance={appearance}
       accentColor="mint"
-      grayColor="gray"
+      grayColor="olive"
       panelBackground="solid"
     >
       {children}
