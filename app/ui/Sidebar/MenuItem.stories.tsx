@@ -3,7 +3,6 @@ import { MenuItem } from "./MenuItem";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export default {
-  title: "Components/MenuItem",
   component: MenuItem,
 } as Meta<typeof MenuItem>;
 
@@ -11,7 +10,7 @@ const Template: StoryFn<typeof MenuItem> = (args) => <MenuItem {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: "Menu Item",
+  label: "Menu Item",
   active: false,
   disabled: false,
 };
@@ -31,7 +30,7 @@ WithSuffix.args = {
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   ...Default.args,
-  icon: <GitHubLogoIcon />,
+  icon: <GitHubLogoIcon width="18" height="18" />,
 };
 
 export const Active = Template.bind({});

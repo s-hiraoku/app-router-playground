@@ -5,24 +5,22 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 describe("<MenuItem />", () => {
   it("renders without crashing", () => {
-    render(
-      <MenuItem active={false} disabled={false}>
-        Test Item
-      </MenuItem>
-    );
+    render(<MenuItem active={false} disabled={false} label="Test Item" />);
     expect(screen.getByText("Test Item")).toBeInTheDocument();
   });
 
   it("handles the disabled state", () => {
-    render(<MenuItem disabled={true}>Disabled Item</MenuItem>);
+    render(<MenuItem disabled={true} label="Disabled Item" />);
     expect(screen.getByRole("button")).toBeDisabled();
   });
 
   it("shows prefix and suffix content", () => {
     render(
-      <MenuItem prefix={<span>Prefix</span>} suffix={<span>Suffix</span>}>
-        Content
-      </MenuItem>
+      <MenuItem
+        prefix={<span>Prefix</span>}
+        suffix={<span>Suffix</span>}
+        label="Content"
+      />
     );
     expect(screen.getByText("Prefix")).toBeInTheDocument();
     expect(screen.getByText("Content")).toBeInTheDocument();
@@ -30,11 +28,7 @@ describe("<MenuItem />", () => {
   });
 
   it("renders an icon when provided", () => {
-    render(<MenuItem icon={<GitHubLogoIcon />}>Item With Icon</MenuItem>);
+    render(<MenuItem icon={<GitHubLogoIcon />} label="Item With Icon" />);
     expect(screen.getByText("Item With Icon")).toBeInTheDocument();
   });
-
-  // Additional tests can include:
-  // - Verifying the `active` prop's effect, if it had a visual or functional impact.
-  // - Testing click events or interactions, especially if the component eventually incorporates onClick or similar props.
 });

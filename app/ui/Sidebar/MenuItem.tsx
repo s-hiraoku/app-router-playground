@@ -1,32 +1,51 @@
-import { Button } from "@radix-ui/themes";
-import { ReactNode, PropsWithChildren, ComponentType } from "react";
+import { Link } from "@radix-ui/themes";
+import { ReactNode } from "react";
+import styles from "./MenuItem.module.scss";
+import classNames from "classnames";
 
 type Props = {
   icon?: ReactNode;
   prefix?: ReactNode;
   suffix?: ReactNode;
+  label: string;
   active?: boolean;
   disabled?: boolean;
   onClick?: () => void;
 };
 
-export const MenuItem: React.FC<PropsWithChildren<Props>> = ({
+export const MenuItem: React.FC<Props> = ({
   icon,
-  children,
   prefix,
   suffix,
+  label,
   active = false,
   disabled = false,
   onClick,
 }) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (disabled) {
+      e.preventDefault();
+      return;
+    }
+    onClick?.();
+  };
+
   return (
-    <li>
-      <Button disabled={disabled} onClick={onClick} variant="soft">
-        {icon}
-        {prefix}
-        {children}
-        {suffix}
-      </Button>
+    <li aria-disabled={disabled} className={styles.container}>
+      {active && <span>Active</span>}
+      <Link
+        onClick={handleClick}
+        className={classNames(styles.item, {
+          [styles.disabled]: disabled,
+        })}
+      >
+        <span className={styles.content}>
+          {icon && <span className={styles.icon}>{icon}</span>}
+          {prefix && <span className={styles.prefix}>{prefix}</span>}
+          <span className={styles.label}>{label}</span>
+          {suffix && <span className={styles.suffix}>{suffix}</span>}
+        </span>
+      </Link>
     </li>
   );
 };
