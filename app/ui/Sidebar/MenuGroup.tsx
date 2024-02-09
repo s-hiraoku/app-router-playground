@@ -1,6 +1,7 @@
 import { ComponentProps } from "react";
 import { MenuItem } from "./MenuItem";
 import styles from "./MenuGroup.module.scss";
+import { Heading } from "@radix-ui/themes";
 
 type Props = {
   title: string;
@@ -10,7 +11,9 @@ type Props = {
 export const MenuGroup: React.FC<Props> = ({ title, items }) => {
   return (
     <section>
-      <h3 className={styles.title}>{title}</h3>
+      <Heading as="h3" size="1" className={styles.title}>
+        {title}
+      </Heading>
       <ul>
         {items.map((item) => (
           <MenuItem

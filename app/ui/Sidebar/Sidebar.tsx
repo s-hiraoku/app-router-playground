@@ -21,6 +21,7 @@ export const Sidebar: React.FC<Props> = ({}) => {
           onClick={handleElasticSidebarClick}
           variant="ghost"
           radius="full"
+          className={styles.toggleButton}
         >
           <ChevronLeftIcon width="18" height="18" />
         </IconButton>
