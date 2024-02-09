@@ -1,9 +1,8 @@
 "use client";
-import { Flex, ScrollArea } from "@radix-ui/themes";
+import { Flex, IconButton, ScrollArea } from "@radix-ui/themes";
 import styles from "./Sidebar.module.scss";
 import classNames from "classnames";
 import { ChevronLeftIcon } from "@radix-ui/react-icons";
-import { RoundGhostButton } from "../RoundGhostButton";
 import { useCallback } from "react";
 import { useToggle } from "@/app/hooks";
 
@@ -17,10 +16,14 @@ export const Sidebar: React.FC<Props> = ({}) => {
   }, []);
   return (
     <aside className={classNames(styles.sidebar, { [styles.open]: isOpen })}>
-      <Flex align="center" justify="end" className={styles.controller}>
-        <RoundGhostButton onClick={handleElasticSidebarClick}>
+      <Flex align="center" justify="end" p="2">
+        <IconButton
+          onClick={handleElasticSidebarClick}
+          variant="ghost"
+          radius="full"
+        >
           <ChevronLeftIcon width="18" height="18" />
-        </RoundGhostButton>
+        </IconButton>
       </Flex>
       <nav>
         <ScrollArea>
