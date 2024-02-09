@@ -8,7 +8,7 @@ type Props = {
 
 export const Menu: React.FC<Props> = ({ items }) => {
   return (
-    <>
+    <ul>
       {items.map((item) => {
         if (isMenuGroup(item)) {
           return (
@@ -29,7 +29,7 @@ export const Menu: React.FC<Props> = ({ items }) => {
           />
         );
       })}
-    </>
+    </ul>
   );
 };
 
