@@ -9,9 +9,13 @@ export const Header: React.FC<Props> = ({}) => {
   return (
     <header className={styles.header}>
       <Flex align="center" justify="between" p="2">
-        <Box>
-          <IconButton variant="ghost" className={styles.hamburgerButton}>
-            <HamburgerMenuIcon width="18" height="18" />
+        <Box p="1">
+          <IconButton
+            variant="ghost"
+            radius="full"
+            className={styles.hamburgerButton}
+          >
+            <HamburgerMenuIcon width="16" height="16" />
           </IconButton>
         </Box>
         <Box>App Router playground</Box>
