@@ -12,7 +12,7 @@ export const DefaultLayout: React.FC<PropsWithChildren<{}>> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <Sidebar />
+      <Sidebar items={[]} />
       <Flex className={styles.wrapper}>
         <Header />
         <main className={styles.mainContent}>{children}</main>

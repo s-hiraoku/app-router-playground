@@ -1,21 +1,13 @@
 .sidebar {
-  padding: var(--space-x1) var(--space-x1);
+  padding: var(--space-1) var(--space-1);
   width: 256px;
   height: 100dvh;
-  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 0 var(--gray-a4);
   transition: width 0.3s ease-in-out;
   overflow-y: auto;
 
   &.open {
     width: 40px;
-  }
-
-  ul {
-    padding: 0 var(--space-x2);
-
-    li {
-      margin-top: var(--space-x1);
-    }
   }
 }
 
@@ -23,4 +15,8 @@
   &:hover {
     cursor: pointer;
   }
+}
+
+.nav {
+  padding: var(--space-1) var(--space-1);
 }

@@ -3,12 +3,16 @@ import { Flex, IconButton, ScrollArea } from "@radix-ui/themes";
 import styles from "./Sidebar.module.scss";
 import classNames from "classnames";
 import { ChevronLeftIcon } from "@radix-ui/react-icons";
-import { useCallback } from "react";
+import { ComponentProps, useCallback } from "react";
 import { useToggle } from "@/app/hooks";
 
-type Props = {};
+import { Menu } from "./Menu";
 
-export const Sidebar: React.FC<Props> = ({}) => {
+type Props = {
+  items: ComponentProps<typeof Menu>["items"];
+};
+
+export const Sidebar: React.FC<Props> = ({ items }) => {
   const [isOpen, toggle] = useToggle(false);
 
   const handleElasticSidebarClick = useCallback(() => {
@@ -26,14 +30,9 @@ export const Sidebar: React.FC<Props> = ({}) => {
           <ChevronLeftIcon width="18" height="18" />
         </IconButton>
       </Flex>
-      <nav>
+      <nav className={styles.nav}>
         <ScrollArea>
-          <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Works</li>
-            <li>Contact</li>
-          </ul>
+          <Menu items={items} />
         </ScrollArea>
       </nav>
     </aside>
