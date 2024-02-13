@@ -10,7 +10,7 @@
 }
 
 .mainContent {
-  padding: 8px;
+  padding: var(--space-4);
   width: 100%;
   overflow-y: auto;
 }

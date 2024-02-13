@@ -1,4 +1,4 @@
-import { atomWithToggle } from "./utils";
+import { atomWithToggle, getPrefersDarkMode } from "./utils";
 
-export const isSidebarOpenAtom = atomWithToggle(true);
-export const isDarkModeAtom = atomWithToggle(false);
+const prefersDarkMode = getPrefersDarkMode();
+export const isDarkModeAtom = atomWithToggle(prefersDarkMode);
