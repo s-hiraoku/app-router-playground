@@ -5,8 +5,17 @@
 }
 
 .hamburgerButton {
-  align-items: center;
   display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
   &:hover {
     cursor: pointer;
   }
