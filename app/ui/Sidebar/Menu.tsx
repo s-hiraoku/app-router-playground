@@ -1,9 +1,10 @@
 import { ComponentProps } from "react";
 import { MenuItem } from "./MenuItem";
 import { MenuGroup } from "./MenuGroup";
+import { SidebarMenuItems } from "./types";
 
 type Props = {
-  items: (ComponentProps<typeof MenuGroup> | ComponentProps<typeof MenuItem>)[];
+  items: SidebarMenuItems;
 };
 
 export const Menu: React.FC<Props> = ({ items }) => {
