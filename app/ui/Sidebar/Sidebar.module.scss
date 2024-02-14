@@ -7,7 +7,7 @@
   overflow-y: auto;
 
   &.open {
-    width: 40px;
+    width: var(--sidebar-min-size);
   }
 }
 
