@@ -15,7 +15,7 @@ export const DefaultLayout: React.FC<PropsWithChildren<{}>> = ({
     <div className={styles.container}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Sidebar items={[]} />
-        <Flex className={styles.wrapper}>
+        <Flex direction="column" grow="1">
           <Header />
           <main className={styles.mainContent}>{children}</main>
         </Flex>
