@@ -14,7 +14,7 @@ export const MenuGroup: React.FC<Props> = ({ title, items }) => {
       <Heading as="h3" size="1" className={styles.title}>
         {title}
       </Heading>
-      <ul>
+      <ul className={styles.menu}>
         {items.map((item) => (
           <MenuItem
             key={item.id}
