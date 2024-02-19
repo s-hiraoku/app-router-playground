@@ -13,6 +13,7 @@ Default.args = {
   title: "サンプルメニュー",
   items: [
     {
+      id: 1,
       label: "アイテム1",
       icon: "📄",
       prefix: "🔍",
@@ -22,6 +23,7 @@ Default.args = {
       onClick: action("アイテム1がクリックされました"),
     },
     {
+      id: 2,
       label: "アイテム2",
       icon: "📁",
       prefix: "🔍",
@@ -31,6 +33,7 @@ Default.args = {
       onClick: action("アイテム2がクリックされました"),
     },
     {
+      id: 3,
       label: "アイテム3",
       icon: "🔒",
       prefix: "🔍",

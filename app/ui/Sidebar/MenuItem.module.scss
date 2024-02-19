@@ -23,6 +23,20 @@
   }
 }
 
+.activeBar {
+  width: 4px;
+  border-radius: 2px;
+  background-color: transparent;
+  transition:
+    background-color 0.3s ease-in-out,
+    scale 0.3s ease-in-out;
+  scale: 0 0.8;
+  &.active {
+    background-color: var(--accent-a9);
+    scale: 1;
+  }
+}
+
 .content {
   display: flex;
   align-items: center;

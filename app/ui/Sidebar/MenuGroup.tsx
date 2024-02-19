@@ -5,7 +5,7 @@ import { Heading } from "@radix-ui/themes";
 
 type Props = {
   title: string;
-  items: ComponentProps<typeof MenuItem>[];
+  items: ({ id: number } & ComponentProps<typeof MenuItem>)[];
 };
 
 export const MenuGroup: React.FC<Props> = ({ title, items }) => {
@@ -17,7 +17,7 @@ export const MenuGroup: React.FC<Props> = ({ title, items }) => {
       <ul>
         {items.map((item) => (
           <MenuItem
-            key={item.label}
+            key={item.id}
             icon={item.icon}
             prefix={item.prefix}
             suffix={item.suffix}

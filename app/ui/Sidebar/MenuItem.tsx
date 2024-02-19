@@ -13,6 +13,10 @@ type Props = {
   onClick?: () => void;
 };
 
+const ActiveBar: React.FC<{ active: boolean }> = ({ active }) => (
+  <div className={classNames(styles.activeBar, { [styles.active]: active })} />
+);
+
 export const MenuItem: React.FC<Props> = ({
   icon,
   prefix,
@@ -32,8 +36,9 @@ export const MenuItem: React.FC<Props> = ({
 
   return (
     <li aria-disabled={disabled} className={styles.container}>
-      {active && <span>Active</span>}
+      <ActiveBar active={active} />
       <Link
+        ml="1"
         onClick={handleClick}
         className={classNames(styles.item, {
           [styles.disabled]: disabled,
