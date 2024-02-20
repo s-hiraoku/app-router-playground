@@ -1,7 +1,14 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { Menu } from "./Menu";
 import { action } from "@storybook/addon-actions";
-import { HomeIcon, GearIcon } from "@radix-ui/react-icons";
+import {
+  HomeIcon,
+  GearIcon,
+  RocketIcon,
+  DashboardIcon,
+  PersonIcon,
+  ExitIcon,
+} from "@radix-ui/react-icons";
 
 export default {
   component: Menu,
@@ -20,7 +27,7 @@ Default.args = {
     },
     {
       id: 2,
-      icon: <GearIcon />,
+      icon: <RocketIcon />,
       label: "About",
       onClick: action("clicked About"),
     },
@@ -36,7 +43,7 @@ WithGroups.args = {
       items: [
         {
           id: 1,
-          icon: <HomeIcon />,
+          icon: <DashboardIcon />,
           label: "Dashboard",
           onClick: action("clicked Dashboard"),
         },
@@ -54,13 +61,13 @@ WithGroups.args = {
       items: [
         {
           id: 3,
-          icon: <HomeIcon />,
+          icon: <PersonIcon />,
           label: "Profile",
           onClick: action("clicked Profile"),
         },
         {
           id: 4,
-          icon: <GearIcon />,
+          icon: <ExitIcon />,
           label: "Log out",
           onClick: action("clicked Log out"),
         },
@@ -81,7 +88,7 @@ WithIconsAndStatus.args = {
     },
     {
       id: 2,
-      icon: <GearIcon />,
+      icon: <RocketIcon />,
       label: "About",
       disabled: true,
       onClick: action("clicked About"),
