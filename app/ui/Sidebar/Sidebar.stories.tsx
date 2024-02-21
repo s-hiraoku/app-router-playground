@@ -1,6 +1,14 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { Sidebar } from "./Sidebar";
 import { action } from "@storybook/addon-actions";
+import {
+  DashboardIcon,
+  ExitIcon,
+  GearIcon,
+  HomeIcon,
+  PersonIcon,
+  RocketIcon,
+} from "@radix-ui/react-icons";
 
 export default {
   component: Sidebar,
@@ -17,11 +25,13 @@ Default.args = {
       items: [
         {
           id: 1,
+          icon: <DashboardIcon />,
           label: "Dashboard",
           onClick: action("clicked Dashboard"),
         },
         {
           id: 2,
+          icon: <GearIcon />,
           label: "Settings",
           onClick: action("clicked Settings"),
         },
@@ -33,11 +43,13 @@ Default.args = {
       items: [
         {
           id: 3,
+          icon: <PersonIcon />,
           label: "Profile",
           onClick: action("clicked Profile"),
         },
         {
           id: 4,
+          icon: <ExitIcon />,
           label: "Log out",
           onClick: action("clicked Log out"),
         },
@@ -51,14 +63,14 @@ WithIcons.args = {
   items: [
     {
       id: 1,
-      icon: "🏠",
+      icon: <HomeIcon />,
       label: "Home",
       active: true,
       onClick: action("clicked Home"),
     },
     {
       id: 2,
-      icon: "ℹ️",
+      icon: <RocketIcon />,
       label: "About",
       disabled: true,
       onClick: action("clicked About"),
