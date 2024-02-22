@@ -1,7 +1,6 @@
 import { Link } from "@radix-ui/themes";
 import { ReactNode } from "react";
 import styles from "./MenuItem.module.scss";
-import classNames from "classnames";
 
 type Props = {
   icon?: ReactNode;
@@ -14,9 +13,7 @@ type Props = {
 };
 
 const ActiveIndicator: React.FC<{ active: boolean }> = ({ active }) => (
-  <div
-    className={classNames(styles.activeIndicator, { [styles.active]: active })}
-  />
+  <div className={styles.activeIndicator} data-active={active} />
 );
 
 export const MenuItem: React.FC<Props> = ({
@@ -37,14 +34,14 @@ export const MenuItem: React.FC<Props> = ({
   };
 
   return (
-    <li aria-disabled={disabled} className={styles.container}>
+    <li className={styles.container}>
       <ActiveIndicator active={active} />
       <Link
+        role="button"
         ml="1"
         onClick={handleClick}
-        className={classNames(styles.item, {
-          [styles.disabled]: disabled,
-        })}
+        className={styles.item}
+        data-disabled={disabled}
       >
         <span className={styles.content}>
           {icon && <span className={styles.icon}>{icon}</span>}

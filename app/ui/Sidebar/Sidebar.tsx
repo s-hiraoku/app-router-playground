@@ -1,7 +1,6 @@
 "use client";
 import { Flex, IconButton, ScrollArea } from "@radix-ui/themes";
 import styles from "./Sidebar.module.scss";
-import classNames from "classnames";
 import { ChevronLeftIcon } from "@radix-ui/react-icons";
 import { ComponentProps, useCallback } from "react";
 import { useToggle } from "@/app/hooks";
@@ -13,14 +12,14 @@ type Props = {
 };
 
 export const Sidebar: React.FC<Props> = ({ items }) => {
-  const [isOpen, toggle] = useToggle(false);
+  const [collapsed, toggle] = useToggle(true);
 
   const handleElasticSidebarClick = useCallback(() => {
     toggle();
   }, []);
 
   return (
-    <aside className={classNames(styles.sidebar, { [styles.close]: !!isOpen })}>
+    <aside className={styles.sidebar} data-collapsed={collapsed}>
       <Flex align="center" justify="end" p="2" className={styles.controller}>
         <IconButton
           onClick={handleElasticSidebarClick}

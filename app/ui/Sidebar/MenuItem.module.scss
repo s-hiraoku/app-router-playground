@@ -14,7 +14,7 @@
     background-color: var(--accent-a4);
   }
 
-  &.disabled {
+  &[data-disabled="true"] {
     cursor: not-allowed;
     text-decoration: none;
     color: var(--gray-a8);
@@ -30,7 +30,8 @@
     background-color 0.3s ease-in-out,
     scale 0.3s ease-in-out;
   scale: 0 0.8;
-  &.active {
+
+  &[data-active="true"] {
     background-color: var(--accent-a9);
     scale: 1;
   }
