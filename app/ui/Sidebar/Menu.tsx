@@ -7,6 +7,7 @@ import {
   SidebarMenuItem,
   SidebarMenuItems,
 } from "./types";
+import styles from "./Menu.module.scss";
 
 type Props = {
   items: SidebarMenuItems;
@@ -27,7 +28,7 @@ export const Menu: React.FC<Props> = ({ items }) => {
   }, []);
 
   return (
-    <ul>
+    <ul className={styles.container}>
       {items.map((item) => {
         if (isMenuGroup(item)) {
           return (
