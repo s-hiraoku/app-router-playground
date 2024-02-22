@@ -7,7 +7,6 @@
 .item {
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-6);
-  width: 100%;
 
   &:hover,
   &:focus {
@@ -23,8 +22,8 @@
   }
 }
 
-.activeBar {
-  width: 4px;
+.activeIndicator {
+  min-width: 4px;
   border-radius: 2px;
   background-color: transparent;
   transition:
