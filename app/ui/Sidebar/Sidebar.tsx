@@ -20,7 +20,7 @@ export const Sidebar: React.FC<Props> = ({ items }) => {
   }, []);
 
   return (
-    <aside className={classNames(styles.sidebar, { [styles.open]: isOpen })}>
+    <aside className={classNames(styles.sidebar, { [styles.close]: !!isOpen })}>
       <Flex align="center" justify="end" p="2" className={styles.controller}>
         <IconButton
           onClick={handleElasticSidebarClick}

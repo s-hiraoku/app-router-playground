@@ -5,7 +5,7 @@
   box-shadow: 1px 0 var(--gray-a4);
   transition: width 0.3s ease-in-out;
 
-  &.open {
+  &.close {
     width: var(--sidebar-min-size);
   }
 }
