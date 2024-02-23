@@ -1,12 +1,12 @@
 .sidebar {
   padding: var(--space-1) var(--space-1);
-  width: var(--sidebar-min-size);
+  width: 256px;
   height: 100dvh;
   box-shadow: 1px 0 var(--gray-a4);
   transition: width 0.3s ease-in-out;
 
   &[data-collapsed="true"] {
-    width: 256px;
+    width: var(--sidebar-min-size);
   }
 }
 

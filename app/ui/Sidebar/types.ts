@@ -14,3 +14,8 @@ export type SidebarMenuGroupType = { id: number } & ComponentProps<
 export type SidebarMenuItem = SidebarMenuGroupType | SidebarMenuItemType;
 
 export type SidebarMenuItems = SidebarMenuItem[];
+
+export type SidebarContextType = {
+  collapsed: boolean;
+  toggle: () => void;
+};

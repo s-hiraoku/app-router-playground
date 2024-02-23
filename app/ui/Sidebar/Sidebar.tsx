@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const Sidebar: React.FC<Props> = ({ items }) => {
-  const [collapsed, toggle] = useToggle(true);
+  const [collapsed, toggle] = useToggle(false);
 
   const handleElasticSidebarClick = useCallback(() => {
     toggle();
