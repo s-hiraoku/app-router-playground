@@ -7,6 +7,7 @@ import { PropsWithChildren } from "react";
 import { Flex } from "@radix-ui/themes";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "@/app/ui/ErrorFallback";
+import { SidebarProvider } from "../Sidebar/SidebarProvider";
 
 export const DefaultLayout: React.FC<PropsWithChildren<{}>> = ({
   children,
@@ -14,7 +15,9 @@ export const DefaultLayout: React.FC<PropsWithChildren<{}>> = ({
   return (
     <div className={styles.container}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <Sidebar items={[]} />
+        <SidebarProvider>
+          <Sidebar items={[]} />
+        </SidebarProvider>
         <Flex direction="column" grow="1">
           <Header />
           <main className={styles.mainContent}>{children}</main>

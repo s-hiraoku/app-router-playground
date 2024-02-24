@@ -3,8 +3,7 @@ import { Flex, IconButton, ScrollArea } from "@radix-ui/themes";
 import styles from "./Sidebar.module.scss";
 import { ChevronLeftIcon } from "@radix-ui/react-icons";
 import { ComponentProps, useCallback } from "react";
-import { useToggle } from "@/app/hooks";
-
+import { useSidebar } from "./useSidebar";
 import { Menu } from "./Menu";
 
 type Props = {
@@ -12,7 +11,7 @@ type Props = {
 };
 
 export const Sidebar: React.FC<Props> = ({ items }) => {
-  const [collapsed, toggle] = useToggle(false);
+  const { collapsed, toggle } = useSidebar();
 
   const handleElasticSidebarClick = useCallback(() => {
     toggle();
