@@ -1,4 +1,5 @@
 .sidebar {
+  position: relative;
   padding: var(--space-1) var(--space-1);
   width: 256px;
   height: 100dvh;
@@ -15,12 +16,21 @@
   top: 0;
 }
 
+.nav {
+  padding: var(--space-1) var(--space-1);
+}
+
 .toggleButton {
+  position: absolute;
+  top: 5px;
+  left: calc(256px - 8px);
+  transition: left 0.4s ease-in-out;
+
+  &[data-collapsed="true"] {
+    left: calc(var(--sidebar-min-size) - 8px);
+  }
+
   &:hover {
     cursor: pointer;
   }
-}
-
-.nav {
-  padding: var(--space-1) var(--space-1);
 }

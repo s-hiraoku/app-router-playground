@@ -19,21 +19,21 @@ export const Sidebar: React.FC<Props> = ({ items }) => {
 
   return (
     <aside className={styles.sidebar} data-collapsed={collapsed}>
-      <Flex align="center" justify="end" p="2" className={styles.controller}>
-        <IconButton
-          onClick={handleElasticSidebarClick}
-          variant="ghost"
-          radius="full"
-          className={styles.toggleButton}
-        >
-          <ChevronLeftIcon width="18" height="18" />
-        </IconButton>
-      </Flex>
       <nav className={styles.nav}>
         <ScrollArea>
           <Menu items={items} />
         </ScrollArea>
       </nav>
+      <IconButton
+        aria-label={collapsed ? "Open sidebar" : "Close sidebar"}
+        onClick={handleElasticSidebarClick}
+        variant="ghost"
+        radius="large"
+        className={styles.toggleButton}
+        data-collapsed={collapsed}
+      >
+        <ChevronLeftIcon width="18" height="18" />
+      </IconButton>
     </aside>
   );
 };

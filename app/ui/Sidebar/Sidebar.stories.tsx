@@ -9,12 +9,17 @@ import {
   PersonIcon,
   RocketIcon,
 } from "@radix-ui/react-icons";
+import { SidebarProvider } from "./SidebarProvider";
 
 export default {
   component: Sidebar,
 } as Meta<typeof Sidebar>;
 
-const Template: StoryFn<typeof Sidebar> = (args) => <Sidebar {...args} />;
+const Template: StoryFn<typeof Sidebar> = (args) => (
+  <SidebarProvider>
+    <Sidebar {...args} />
+  </SidebarProvider>
+);
 
 export const Default = Template.bind({});
 Default.args = {
