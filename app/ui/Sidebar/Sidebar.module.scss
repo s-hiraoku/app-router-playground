@@ -9,6 +9,12 @@
   &[data-collapsed="true"] {
     width: var(--sidebar-min-size);
   }
+
+  &:hover {
+    .toggleButton {
+      visibility: visible;
+    }
+  }
 }
 
 .controller {
@@ -22,12 +28,16 @@
 
 .toggleButton {
   position: absolute;
-  top: 5px;
-  left: calc(256px - 8px);
+  top: 32px;
+  left: calc(256px - 12px);
   transition: left 0.4s ease-in-out;
+  z-index: var(--layer-stack-2);
+  visibility: hidden;
 
   &[data-collapsed="true"] {
-    left: calc(var(--sidebar-min-size) - 8px);
+    left: calc(var(--sidebar-min-size) - 12px);
+    visibility: visible;
+    rotate: 180deg;
   }
 
   &:hover {

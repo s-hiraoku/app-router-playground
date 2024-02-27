@@ -27,7 +27,8 @@ export const Sidebar: React.FC<Props> = ({ items }) => {
       <IconButton
         aria-label={collapsed ? "Open sidebar" : "Close sidebar"}
         onClick={handleElasticSidebarClick}
-        variant="ghost"
+        variant="solid"
+        size="1"
         radius="large"
         className={styles.toggleButton}
         data-collapsed={collapsed}
