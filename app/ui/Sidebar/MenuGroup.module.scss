@@ -1,5 +1,18 @@
 .title {
   color: var(--gray-10);
+  transition:
+    opacity 0.4s ease-in-out,
+    visibility 0s linear 0.4s;
+  opacity: 1;
+  visibility: visible;
+
+  &[data-collapsed="true"] {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.4s ease-in-out,
+      visibility 0s linear 0s;
+  }
 }
 
 .menu {

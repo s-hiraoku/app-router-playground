@@ -2,18 +2,22 @@ import type { Meta, StoryFn } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { MenuGroup } from "./MenuGroup";
 import {
-  DotFilledIcon,
   FileIcon,
   HomeIcon,
   LockClosedIcon,
 } from "@radix-ui/react-icons";
 import { Badge } from "@radix-ui/themes";
+import { SidebarProvider } from "./SidebarProvider";
 
 export default {
   component: MenuGroup,
 } as Meta<typeof MenuGroup>;
 
-const Template: StoryFn<typeof MenuGroup> = (args) => <MenuGroup {...args} />;
+const Template: StoryFn<typeof MenuGroup> = (args) => (
+  <SidebarProvider>
+    <MenuGroup {...args} />
+  </SidebarProvider>
+);
 
 export const Default = Template.bind({});
 Default.args = {

@@ -2,6 +2,7 @@ import { ComponentProps } from "react";
 import { MenuItem } from "./MenuItem";
 import styles from "./MenuGroup.module.scss";
 import { Heading } from "@radix-ui/themes";
+import { useSidebar } from "./useSidebar";
 
 type Props = {
   title: string;
@@ -9,9 +10,15 @@ type Props = {
 };
 
 export const MenuGroup: React.FC<Props> = ({ title, items }) => {
+  const { collapsed } = useSidebar();
   return (
     <section>
-      <Heading as="h3" size="1" className={styles.title}>
+      <Heading
+        as="h3"
+        size="1"
+        className={styles.title}
+        data-collapsed={collapsed}
+      >
         {title}
       </Heading>
       <ul className={styles.menu}>

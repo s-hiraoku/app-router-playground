@@ -9,12 +9,17 @@ import {
   PersonIcon,
   ExitIcon,
 } from "@radix-ui/react-icons";
+import { SidebarProvider } from "./SidebarProvider";
 
 export default {
   component: Menu,
 } as Meta<typeof Menu>;
 
-const Template: StoryFn<typeof Menu> = (args) => <Menu {...args} />;
+const Template: StoryFn<typeof Menu> = (args) => (
+  <SidebarProvider>
+    <Menu {...args} />{" "}
+  </SidebarProvider>
+);
 
 export const Default = Template.bind({});
 Default.args = {

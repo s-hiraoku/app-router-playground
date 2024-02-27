@@ -1,12 +1,17 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import { MenuItem } from "./MenuItem";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { SidebarProvider } from "./SidebarProvider";
 
 export default {
   component: MenuItem,
 } as Meta<typeof MenuItem>;
 
-const Template: StoryFn<typeof MenuItem> = (args) => <MenuItem {...args} />;
+const Template: StoryFn<typeof MenuItem> = (args) => (
+  <SidebarProvider>
+    <MenuItem {...args} />
+  </SidebarProvider>
+);
 
 export const Default = Template.bind({});
 Default.args = {

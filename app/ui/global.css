@@ -2,7 +2,7 @@
 @import "~@radix-ui/themes/styles.css";
 
 :root {
-  --sidebar-min-size: 56px;
+  --sidebar-min-size: 64px;
 
   /*  https://zenn.dev/zozotech/articles/7609d2c7af30df?redirected=1#layer-stack-%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB */
   --layer-stack-1: 1;
