@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Menu {
+  id  String  @default(cuid()) @id
+  items MenuItems[]
+}
+
+model MenuItems {
+  id        String    @default(cuid()) @id
+  menuId    String
+  menu      Menu      @relation(fields: [menuId], references: [id])
+  menuItemId String?
+  menuItem  MenuItem? @relation(fields: [menuItemId], references: [id])
+  menuGroupId String?
+  menuGroup  MenuGroup? @relation(fields: [menuGroupId], references: [id])
+}
+
+model MenuGroup {
+  id     String     @default(cuid()) @id
+  items  MenuItem[]
+  menus  MenuItems[]
+}
+
+model MenuItem {
+  id    String     @default(cuid()) @id
+  icon  String
+  label String
+  menus MenuItems[]
+}
