@@ -5,34 +5,31 @@ generator client {
 datasource db {
   provider = "postgresql"
   url = env("POSTGRES_PRISMA_URL")
-  directUrl = env("POSTGRES_URL_NON_POOLING")
-  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  email     String    @unique
+  name      String?
+  menus     Menu[]
 }
 
 model Menu {
-  id  String  @default(cuid()) @id
-  items MenuItems[]
+  id         Int       @id @default(autoincrement())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  name       String
+  owner      User      @relation(fields: [ownerId], references: [id])
+  ownerId    Int
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
 }
 
-model MenuItems {
-  id        String    @default(cuid()) @id
-  menuId    String
-  menu      Menu      @relation(fields: [menuId], references: [id])
-  menuItemId String?
-  menuItem  MenuItem? @relation(fields: [menuItemId], references: [id])
-  menuGroupId String?
-  menuGroup  MenuGroup? @relation(fields: [menuGroupId], references: [id])
-}
-
-model MenuGroup {
-  id     String     @default(cuid()) @id
-  items  MenuItem[]
-  menus  MenuItems[]
-}
-
-model MenuItem {
-  id    String     @default(cuid()) @id
-  icon  String
-  label String
-  menus MenuItems[]
+model Category {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  name      String
+  menus     Menu[]
 }
