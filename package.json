@@ -10,7 +10,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "prisma:generate": "npx prisma generate",
+    "prisma:studio": "dotenv -e .env.local -- npx prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^5.10.2",
