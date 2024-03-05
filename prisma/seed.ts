@@ -16,6 +16,7 @@ async function main() {
       menus: {
         create: {
           name: "Home",
+          iconName: "HomeIcon",
         },
       },
     },
