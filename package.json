@@ -11,8 +11,11 @@
     "build-storybook": "storybook build",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "prisma:generate": "npx prisma generate",
-    "prisma:studio": "dotenv -e .env.local -- npx prisma studio"
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "prisma db seed",
+    "prisma:reset": "prisma migrate reset --force",
+    "prisma:studio": "prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^5.10.2",
@@ -53,10 +56,14 @@
     "prisma": "^5.10.2",
     "sass": "^1.70.0",
     "storybook": "^7.6.10",
+    "ts-node": "^10.9.2",
     "typescript": "^5",
     "vitest": "^1.2.1"
   },
   "volta": {
     "node": "20.11.0"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }
