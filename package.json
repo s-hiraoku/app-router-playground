@@ -61,7 +61,7 @@
     "vitest": "^1.2.1"
   },
   "volta": {
-    "node": "20.11.0"
+    "node": "20.11.1"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
