@@ -6,3 +6,5 @@ const prefersDarkMode = getPrefersDarkMode();
 export const isDarkModeAtom = atomWithToggle(prefersDarkMode);
 
 export const sidebarMenuItemsAtom = atom<SidebarMenuItems>;
+
+export const userAtom = atom;
