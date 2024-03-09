@@ -13,6 +13,7 @@ async function main() {
     data: {
       email: "test@example.com",
       name: "Test User",
+      password: "",
       menus: {
         create: {
           name: "Home",
