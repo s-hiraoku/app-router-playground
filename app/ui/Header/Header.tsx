@@ -1,17 +1,25 @@
 "use client";
 import styles from "./Header.module.scss";
-import { HamburgerMenuIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import {
+  EnterIcon,
+  HamburgerMenuIcon,
+  MagnifyingGlassIcon,
+} from "@radix-ui/react-icons";
 import { Box, IconButton, Flex, Avatar } from "@radix-ui/themes";
 import { DarkModeSelector, DarkModeType } from "./DarkModeSelector";
 import { useSetAtom } from "jotai";
 import { isDarkModeAtom } from "@/app/store";
 import { useSystemDarkMode } from "@/app/hooks/useSystemDarkMode";
+import { User } from "next-auth";
+import { useRouter } from "next/navigation";
 
-type Props = {};
+type Props = { user: User | undefined };
 
-export const Header: React.FC<Props> = ({}) => {
+export const Header: React.FC<Props> = ({ user }) => {
+  const router = useRouter();
   const setDarkMode = useSetAtom(isDarkModeAtom);
   const systemDarkMode = useSystemDarkMode();
+
   const handleDarkModeChange = (darkMode: DarkModeType) => {
     if (darkMode === "system") {
       setDarkMode(systemDarkMode === "dark" ? true : false);
@@ -19,6 +27,11 @@ export const Header: React.FC<Props> = ({}) => {
     }
     setDarkMode(darkMode === "dark" ? true : false);
   };
+
+  const handleLogin = () => {
+    router.push("/login");
+  };
+
   return (
     <header className={styles.header}>
       <Flex align="center" justify="between" px="6" py="2">
@@ -55,7 +68,23 @@ export const Header: React.FC<Props> = ({}) => {
               />
             </Box>
             <Box pl="4">
-              <Avatar fallback={""} color="gray" />
+              {user ? (
+                <Avatar
+                  src={user.image ?? undefined}
+                  fallback={user.name?.charAt(0).toUpperCase() ?? ""}
+                  color="gray"
+                />
+              ) : (
+                <IconButton
+                  color="gray"
+                  size="3"
+                  variant="ghost"
+                  className={styles.icon}
+                  onClick={handleLogin}
+                >
+                  <EnterIcon width="24" height="24" />
+                </IconButton>
+              )}
             </Box>
           </Flex>
         </Box>

@@ -12,7 +12,7 @@ export const GuestLayout: React.FC<PropsWithChildren> = ({ children }) => {
     <div className={styles.container}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Flex direction="column" grow="1">
-          <Header />
+          <Header user={undefined} />
           <main className={styles.mainContent}>{children}</main>
         </Flex>
       </ErrorBoundary>
