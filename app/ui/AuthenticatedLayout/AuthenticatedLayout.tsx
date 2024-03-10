@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./DefaultLayout.module.scss";
+import styles from "./AuthenticatedLayout.module.scss";
 import { Sidebar } from "@/app/ui/Sidebar";
 import { Header } from "@/app/ui/Header";
 import { PropsWithChildren } from "react";
@@ -9,7 +9,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "@/app/ui/ErrorFallback";
 import { SidebarProvider } from "../Sidebar/SidebarProvider";
 
-export const DefaultLayout: React.FC<PropsWithChildren<{}>> = ({
+export const AuthenticatedLayout: React.FC<PropsWithChildren<{}>> = ({
   children,
 }) => {
   return (
