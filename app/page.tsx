@@ -1,9 +1,9 @@
-import { DefaultLayout } from "./ui/DefaultLayout";
+import { GuestLayout } from "@/app/ui/GuestLayout";
 
-export default function Home() {
+export default function Page() {
   return (
-    <DefaultLayout>
-      <h1>Home</h1>
-    </DefaultLayout>
+    <GuestLayout>
+      <h1>Main</h1>
+    </GuestLayout>
   );
 }
