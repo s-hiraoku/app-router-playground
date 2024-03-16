@@ -1,4 +1,4 @@
-import { LoginForm, Logo } from "@/app/ui/LoginForm";
+import { LoginForm } from "@/app/ui/LoginForm";
 import styles from "./page.module.scss";
 import { GuestLayout } from "../ui/GuestLayout";
 
