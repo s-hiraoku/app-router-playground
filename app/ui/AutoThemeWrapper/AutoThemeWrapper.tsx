@@ -21,7 +21,7 @@ export const AutoThemeWrapper: React.FC<PropsWithChildren<Props>> = ({
       panelBackground="solid"
     >
       {children}
-      {/* <ThemePanel /> */}
+      <ThemePanel />
     </Theme>
   );
 };
