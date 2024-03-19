@@ -19,7 +19,8 @@ export const AuthenticatedLayout: React.FC<PropsWithChildren<{}>> = ({
           <Sidebar items={[]} />
         </SidebarProvider>
         <Flex direction="column" grow="1">
-          <Header />
+          // TODO: The user setting is tentative.
+          <Header user={undefined} />
           <main className={styles.mainContent}>{children}</main>
         </Flex>
       </ErrorBoundary>

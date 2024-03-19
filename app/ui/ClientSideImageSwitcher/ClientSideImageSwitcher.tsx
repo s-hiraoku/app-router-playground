@@ -15,7 +15,7 @@ export const ClientSideImageSwitcher: React.FC<Props> = ({
   ...props
 }) => {
   const isDarkMode = useAtomValue(isDarkModeAtom);
-  console.log("isDarkMode", isDarkMode);
+
   const image = isDarkMode ? darkSrc : lightSrc;
   return <Image {...props} src={image} />;
 };
