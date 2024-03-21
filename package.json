@@ -55,7 +55,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-storybook": "^0.8.0",
     "happy-css-modules": "^2.1.2",
-    "happy-dom": "^13.2.1",
+    "happy-dom": "^14.0.0",
     "markuplint": "^4.0.0",
     "prettier": "^3.2.4",
     "prisma": "^5.10.2",
