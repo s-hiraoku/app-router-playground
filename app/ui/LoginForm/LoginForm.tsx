@@ -37,8 +37,8 @@ export const LoginForm: React.FC<Props> = ({}) => {
             </Button>
             <Button variant="outline" className={styles.formButton} size="3">
               <ClientSideImageSwitcher
-                darkSrc="/github-mark-white.svg"
-                lightSrc="/github-mark.svg"
+                srcDark="/github-mark-white.svg"
+                srcLight="/github-mark.svg"
                 alt="Github"
                 width="24"
                 height="24"
