@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { isDarkModeAtom } from "@/app/store";
 import { useAtomValue } from "jotai";
