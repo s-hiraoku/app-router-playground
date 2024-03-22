@@ -72,6 +72,11 @@ export const LoginForm: React.FC<Props> = ({}) => {
                 </Text>
                 <TextFieldInput width="100%" color="gray" />
               </Box>
+              <Box mt="1">
+                <Button variant="soft" className={styles.formButton}>
+                  Login
+                </Button>
+              </Box>
             </Flex>
             <Text as="div" size="2" mt="2">
               Don't have an account?
