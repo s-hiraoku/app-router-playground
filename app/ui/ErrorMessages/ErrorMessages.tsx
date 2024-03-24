@@ -20,5 +20,7 @@ type ErrorMessageProps = {
 };
 
 export const ErrorMessage = memo(({ message }: ErrorMessageProps) => (
-  <div className={styles.errorMessage}>{message}</div>
+  <div aria-live="polite" className={styles.errorMessage}>
+    {message}
+  </div>
 ));
