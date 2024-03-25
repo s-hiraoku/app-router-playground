@@ -5,6 +5,7 @@ import { z } from "zod";
 import { sql } from "@vercel/postgres";
 import bcrypt from "bcryptjs";
 import { User } from "@prisma/client";
+import { AuthUserScheme } from "./schemes";
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
@@ -21,9 +22,7 @@ export const { auth, signIn, signOut } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials) {
-        const parsedCredentials = z
-          .object({ email: z.string().email(), password: z.string().min(6) })
-          .safeParse(credentials);
+        const parsedCredentials = AuthUserScheme.safeParse(credentials);
 
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
