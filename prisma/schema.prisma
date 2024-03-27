@@ -34,6 +34,8 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
 }
 
 model User {
@@ -47,6 +49,8 @@ model User {
   password      String?
   name          String?
   menus         Menu[]
+
+  @@map("user")
 }
 
 model VerificationToken {
@@ -55,6 +59,7 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+  @@map("verification_tokens")
 }
 
 model Menu {
@@ -67,6 +72,8 @@ model Menu {
   ownerId     String
   category    Category? @relation(fields: [categoryId], references: [id])
   categoryId  String?
+
+  @@map("menu")
 }
 
 model Category {
@@ -75,4 +82,6 @@ model Category {
   updatedAt DateTime  @updatedAt
   name      String
   menus     Menu[]
+
+  @@map("category")
 }
