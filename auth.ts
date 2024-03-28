@@ -8,7 +8,7 @@ import { AuthUserScheme } from "./schemes";
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
-    const user = await sql<User>`SELECT * FROM user WHERE email=${email}`;
+    const user = await sql<User>`SELECT * FROM users WHERE email=${email}`;
     return user.rows[0];
   } catch (error) {
     console.error("Failed to fetch user:", error);

@@ -52,7 +52,7 @@ model User {
   name          String?
   menus         Menu[]
 
-  @@map("user")
+  @@map("users")
 }
 
 model VerificationToken {
