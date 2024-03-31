@@ -85,5 +85,5 @@ model Category {
   name      String
   menus     Menu[]
 
-  @@map("categorys")
+  @@map("categories")
 }
