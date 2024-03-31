@@ -50,7 +50,7 @@ model User {
   sessions      Session[]
   password      String?
   name          String?
-  menus         Menu[]
+  menuItems     MenuItem[]
 
   @@map("users")
 }
@@ -64,7 +64,7 @@ model VerificationToken {
   @@map("verification_tokens")
 }
 
-model Menu {
+model MenuItem {
   id          String    @id @default(uuid())
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
@@ -75,15 +75,15 @@ model Menu {
   category    Category? @relation(fields: [categoryId], references: [id])
   categoryId  String?
 
-  @@map("menus")
+  @@map("menu_items")
 }
 
 model Category {
-  id        String    @id @default(uuid())
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  name      String
-  menus     Menu[]
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  name          String
+  menuItems     MenuItem[]
 
   @@map("categories")
 }

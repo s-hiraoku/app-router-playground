@@ -6,7 +6,9 @@ import { ClientSideImageSwitcher } from "../ClientSideImageSwitcher";
 
 import { CredentialsForm } from "./CredentialsForm";
 
-type Props = {};
+type Props = {
+  mode?: "login" | "signup";
+};
 
 export const LoginForm: React.FC<Props> = ({}) => {
   return (
