@@ -3,7 +3,7 @@
 import { Box, Flex, TextFieldInput, Text, Button } from "@radix-ui/themes";
 import { useFormState, useFormStatus } from "react-dom";
 import styles from "./CredentialsForm.module.scss";
-import { authenticate } from "./actions";
+import { authenticate, signUp } from "./actions";
 import { ErrorMessages } from "../ErrorMessages";
 import { AuthAction, initialState } from "./models";
 
@@ -12,7 +12,10 @@ type Props = {
 };
 
 export const CredentialsForm: React.FC<Props> = ({ authAction }) => {
-  const [state, dispatch] = useFormState(authenticate, initialState);
+  const [state, dispatch] = useFormState(
+    authAction === "login" ? authenticate : signUp,
+    initialState
+  );
 
   return (
     <form action={dispatch} className={styles.container} noValidate>
