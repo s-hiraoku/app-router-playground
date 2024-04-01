@@ -1,21 +1,26 @@
 import { Button, Card, Separator, Text, Flex } from "@radix-ui/themes";
-import styles from "./LoginForm.module.scss";
+import styles from "./AuthForm.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { ClientSideImageSwitcher } from "../ClientSideImageSwitcher";
-
 import { CredentialsForm } from "./CredentialsForm";
+import { AuthAction } from "./models";
 
 type Props = {
-  mode?: "login" | "signup";
+  authAction: AuthAction;
 };
 
-export const LoginForm: React.FC<Props> = ({}) => {
+export const AuthForm: React.FC<Props> = ({ authAction }) => {
+  const isLogin = authAction === "login";
+  const title = isLogin ? "Login" : "Sign up";
+  const switchModeText = isLogin ? "Sign up" : "Login";
+  const switchModeLink = isLogin ? "/sign-up" : "/login";
+
   return (
     <div>
       <Flex justify="center" p="4">
         <Text as="div" size="7">
-          Login
+          {title}
         </Text>
       </Flex>
       <Card className={styles.container}>
@@ -54,12 +59,17 @@ export const LoginForm: React.FC<Props> = ({}) => {
             </Text>
             <Separator size="4" />
           </Flex>
-          <CredentialsForm />
+          <CredentialsForm authAction={authAction} />
           <Text as="div" size="2" mt="2">
-            Don't have an account?
-            <Link href="/sign-up">
-              <Button variant="ghost" ml="2" size="2" className={styles.signUp}>
-                Sign up
+            {isLogin ? "Don't have an account?" : "Already have an account?"}
+            <Link href={switchModeLink}>
+              <Button
+                variant="ghost"
+                ml="2"
+                size="2"
+                className={styles.switchModeButton}
+              >
+                {switchModeText}
               </Button>
             </Link>
           </Text>

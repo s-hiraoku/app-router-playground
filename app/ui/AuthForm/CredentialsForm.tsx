@@ -5,9 +5,13 @@ import { useFormState, useFormStatus } from "react-dom";
 import styles from "./CredentialsForm.module.scss";
 import { authenticate } from "./actions";
 import { ErrorMessages } from "../ErrorMessages";
-import { initialState } from "./models";
+import { AuthAction, initialState } from "./models";
 
-export const CredentialsForm: React.FC = () => {
+type Props = {
+  authAction: AuthAction;
+};
+
+export const CredentialsForm: React.FC<Props> = ({ authAction }) => {
   const [state, dispatch] = useFormState(authenticate, initialState);
 
   return (
@@ -48,7 +52,7 @@ export const CredentialsForm: React.FC = () => {
           )}
         </Box>
         <Box mt="1">
-          <LoginButton />
+          <AuthButton authAction={authAction} />
         </Box>
         <Box>
           {state?.message && <ErrorMessages errors={[state.message]} />}
@@ -58,7 +62,8 @@ export const CredentialsForm: React.FC = () => {
   );
 };
 
-const LoginButton = () => {
+const AuthButton: React.FC<Props> = ({ authAction }) => {
+  const buttonText = authAction === "login" ? "Login" : "Sign Up";
   const { pending } = useFormStatus();
 
   return (
@@ -68,7 +73,7 @@ const LoginButton = () => {
       className={styles.button}
       disabled={pending}
     >
-      Login
+      {buttonText}
     </Button>
   );
 };

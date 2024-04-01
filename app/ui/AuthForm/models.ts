@@ -15,3 +15,5 @@ export const initialState = {
   },
   message: "",
 } satisfies State;
+
+export type AuthAction = "login" | "signUp";
