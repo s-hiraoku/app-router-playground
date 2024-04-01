@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const AuthUserScheme = z.object({
+export const CredentialsUserScheme = z.object({
   email: z
     .string({
       invalid_type_error: "Please enter an email address.",
