@@ -1,8 +1,7 @@
-import { unstable_noStore as noStore } from "next/cache";
 import { sql } from "@vercel/postgres";
 import { User } from "@prisma/client";
 
-export async function fetchUser(email: string) {
+export async function fetchUserByEmail(email: string) {
   try {
     const user = await sql<User>`SELECT * FROM users WHERE email=${email}`;
     return user.rows[0];
