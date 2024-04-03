@@ -1,4 +1,4 @@
 export * from "./radix-ui";
-export * from "./db";
+export * from "./dbDefinitions";
 
 export type DarkMode = "dark" | "light";

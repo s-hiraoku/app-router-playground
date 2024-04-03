@@ -66,7 +66,7 @@ export const CredentialsForm: React.FC<Props> = ({ authAction }) => {
 };
 
 const AuthButton: React.FC<Props> = ({ authAction }) => {
-  const buttonText = authAction === "login" ? "Login" : "Sign Up";
+  const buttonText = authAction === "login" ? "Login" : "Sign up";
   const { pending } = useFormStatus();
 
   return (
