@@ -3,6 +3,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "@/app/ui/ErrorFallback";
 import { Flex } from "@radix-ui/themes";
 import { Metadata } from "next";
+import { Header } from "@/app//ui/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,6 +19,7 @@ export default function GuestLayout({
     <div className={styles.container}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Flex direction="column" grow="1">
+          <Header user={undefined} />
           <main className={styles.mainContent}>{children}</main>
         </Flex>
       </ErrorBoundary>
