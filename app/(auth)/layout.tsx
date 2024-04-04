@@ -1,4 +1,3 @@
-import { PropsWithChildren } from "react";
 import styles from "./layout.module.scss";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "@/app/ui/ErrorFallback";
