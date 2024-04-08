@@ -18,7 +18,7 @@ export default function GuestLayout({
   return (
     <div className={styles.container}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <Flex direction="column" grow="1">
+        <Flex direction="column" flexGrow="1">
           <Header user={undefined} />
           <main className={styles.mainContent}>{children}</main>
         </Flex>

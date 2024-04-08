@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Flex, TextFieldInput, Text, Button } from "@radix-ui/themes";
+import { Box, Flex, TextField, Text, Button } from "@radix-ui/themes";
 import { useFormState, useFormStatus } from "react-dom";
 import styles from "./CredentialsForm.module.scss";
 import { authenticate, signUp } from "./actions";
@@ -24,11 +24,11 @@ export const CredentialsForm: React.FC<Props> = ({ authAction }) => {
           <Text as="label" size="1" htmlFor="email">
             Email
           </Text>
-          <TextFieldInput
-            id="email"
-            type="email"
-            name="email"
+          <TextField.Root
             placeholder="Your email address"
+            name="email"
+            type="email"
+            id="email"
             aria-describedby="email-error"
           />
         </Box>
@@ -41,11 +41,11 @@ export const CredentialsForm: React.FC<Props> = ({ authAction }) => {
           <Text as="label" size="1" htmlFor="password">
             Password
           </Text>
-          <TextFieldInput
-            id="password"
+          <TextField.Root
             name="password"
             type="password"
             placeholder="Your password"
+            id="password"
             aria-describedby="password-error"
           />
         </Box>
