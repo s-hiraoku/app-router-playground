@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 async function main() {
   // delete all data
   await prisma.category.deleteMany();
-  await prisma.menu.deleteMany();
+  await prisma.menuItem.deleteMany();
   await prisma.user.deleteMany();
 
   // create a user
@@ -14,7 +14,7 @@ async function main() {
       email: "test@example.com",
       name: "Test User",
       password: "",
-      menus: {
+      menuItems: {
         create: {
           name: "Home",
           iconName: "HomeIcon",
