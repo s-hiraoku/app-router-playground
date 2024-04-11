@@ -4,9 +4,10 @@ import { signIn } from "@/auth";
 import { CredentialsUserScheme } from "@/schemes";
 import { AuthError } from "next-auth";
 import { State } from "./models";
-import { sql } from "@vercel/postgres";
-import { User } from "@prisma/client";
 import { PostgresErrorCodes } from "@/types";
+import { createUser } from "@/db/user";
+import bcrypt from "bcryptjs";
+import { Prisma } from "@prisma/client";
 
 export async function authenticate(prevState: State, formData: FormData) {
   const result = CredentialsUserScheme.safeParse({
@@ -58,22 +59,32 @@ export const signUp = async (prevState: State, formData: FormData) => {
   const { email, password } = result.data;
 
   try {
-    await sql<User>`INSERT INTO users (email, password) VALUES (${email}, ${password})`;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = await createUser({
+      email,
+      password: hashedPassword,
+    });
   } catch (error) {
-    if (error instanceof Error && "code" in error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
       switch (error.code) {
         case PostgresErrorCodes.UNIQUE_VIOLATION:
           return {
             errors: {},
-            message: "Email is already exists.",
+            message: `Email ${email} already exists.`,
           };
         default:
           console.error("Sign up error:", error);
           return {
             errors: {},
-            message: "Failed to sign up due to an unexpected error.",
+            message: `Failed to sign up due to an unexpected error.`,
           };
       }
+    } else if (error instanceof Prisma.PrismaClientUnknownRequestError) {
+      console.error("Sign up error:", error);
+      return {
+        errors: {},
+        message: `Failed to sign up due to an unexpected error.`,
+      };
     }
     throw error;
   }
