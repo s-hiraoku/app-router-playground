@@ -4,7 +4,7 @@ import { signIn } from "@/auth";
 import { CredentialsUserScheme } from "@/schemes";
 import { AuthError } from "next-auth";
 import { State } from "./models";
-import { PostgresErrorCodes } from "@/types";
+import { PrismaErrorCodes } from "@/types";
 import { createUser } from "@/db/user";
 import bcrypt from "bcryptjs";
 import { Prisma } from "@prisma/client";
@@ -65,9 +65,10 @@ export const signUp = async (prevState: State, formData: FormData) => {
       password: hashedPassword,
     });
   } catch (error) {
+    console.error("Sign up error:", error);
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       switch (error.code) {
-        case PostgresErrorCodes.UNIQUE_VIOLATION:
+        case PrismaErrorCodes.UNIQUE_CONSTRAINT_FAILED:
           return {
             errors: {},
             message: `Email ${email} already exists.`,
