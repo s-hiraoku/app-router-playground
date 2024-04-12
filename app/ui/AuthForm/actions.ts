@@ -71,7 +71,7 @@ export const signUp = async (prevState: State, formData: FormData) => {
         case PrismaErrorCodes.UNIQUE_CONSTRAINT_FAILED:
           return {
             errors: {},
-            message: `Email ${email} already exists.`,
+            message: `${email} already exists.`,
           };
         default:
           console.error("Sign up error:", error);
