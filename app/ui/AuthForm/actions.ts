@@ -1,15 +1,18 @@
 "use server";
 
 import { signIn } from "@/auth";
-import { CredentialsUserScheme } from "@/schemes";
+import { CredentialsUserScheme, SignUpUserScheme } from "@/schemes";
 import { AuthError } from "next-auth";
-import { State } from "./models";
 import { PrismaErrorCodes } from "@/types";
 import { createUser } from "@/db/user";
 import bcrypt from "bcryptjs";
 import { Prisma } from "@prisma/client";
+import { CredentialsFormState, SignUpFormState } from "./CredentialsForm";
 
-export async function authenticate(prevState: State, formData: FormData) {
+export async function authenticate(
+  prevState: CredentialsFormState,
+  formData: FormData
+) {
   const result = CredentialsUserScheme.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -43,8 +46,12 @@ export async function authenticate(prevState: State, formData: FormData) {
   }
 }
 
-export const signUp = async (prevState: State, formData: FormData) => {
-  const result = CredentialsUserScheme.safeParse({
+export const signUp = async (
+  prevState: SignUpFormState,
+  formData: FormData
+) => {
+  const result = SignUpUserScheme.safeParse({
+    username: formData.get("username"),
     email: formData.get("email"),
     password: formData.get("password"),
   });
@@ -56,11 +63,12 @@ export const signUp = async (prevState: State, formData: FormData) => {
     };
   }
 
-  const { email, password } = result.data;
+  const { email, password, username } = result.data;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await createUser({
+      name: username,
       email,
       password: hashedPassword,
     });

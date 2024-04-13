@@ -10,3 +10,10 @@ export const CredentialsUserScheme = z.object({
     .string({ invalid_type_error: "Please enter a password." })
     .min(6, { message: "Name must be at least 6 characters." }),
 });
+
+export const SignUpUserScheme = z.object({
+  ...CredentialsUserScheme.shape,
+  username: z.string({
+    invalid_type_error: "Please enter a username.",
+  }),
+});

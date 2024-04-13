@@ -3,8 +3,7 @@ import styles from "./AuthForm.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { ClientSideImageSwitcher } from "../ClientSideImageSwitcher";
-import { CredentialsForm } from "./CredentialsForm";
-import { AuthAction } from "./models";
+import { CredentialsForm, AuthAction, SignUpForm } from "./CredentialsForm";
 
 type Props = {
   authAction: AuthAction;
@@ -59,7 +58,7 @@ export const AuthForm: React.FC<Props> = ({ authAction }) => {
             </Text>
             <Separator size="4" />
           </Flex>
-          <CredentialsForm authAction={authAction} />
+          {isLogin ? <CredentialsForm /> : <SignUpForm />}
           <Text as="div" size="2" mt="2">
             {isLogin ? "Don't have an account?" : "Already have an account?"}
             <Link href={switchModeLink}>
