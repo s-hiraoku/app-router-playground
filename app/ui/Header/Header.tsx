@@ -1,4 +1,5 @@
 "use client";
+
 import styles from "./Header.module.scss";
 import {
   EnterIcon,

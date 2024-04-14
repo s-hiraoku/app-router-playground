@@ -1,4 +1,5 @@
 "use client";
+
 import { Flex, IconButton, ScrollArea } from "@radix-ui/themes";
 import styles from "./Sidebar.module.scss";
 import { ChevronLeftIcon } from "@radix-ui/react-icons";

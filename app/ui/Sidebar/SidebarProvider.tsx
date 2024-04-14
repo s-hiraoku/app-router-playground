@@ -1,3 +1,5 @@
+"use client";
+
 import { useToggle } from "@/app/hooks";
 import { PropsWithChildren } from "react";
 import { SidebarContext } from "./SidebarContext";
