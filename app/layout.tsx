@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { AutoThemeWrapper } from "@/app/ui/AutoThemeWrapper";
 import "@/app/ui/global.css";
 import { Provider } from "jotai";
+import { ErrorBoundary } from "react-error-boundary";
+import { ErrorFallback } from "@/app/ui/ErrorFallback";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +22,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Provider>
-          <AutoThemeWrapper>{children}</AutoThemeWrapper>
+          <AutoThemeWrapper>
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+              {children}
+            </ErrorBoundary>
+          </AutoThemeWrapper>
         </Provider>
       </body>
     </html>
