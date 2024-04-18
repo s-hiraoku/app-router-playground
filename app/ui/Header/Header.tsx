@@ -13,6 +13,7 @@ import { isDarkModeAtom } from "@/app/store";
 import { useSystemDarkMode } from "@/app/hooks/useSystemDarkMode";
 import { User } from "next-auth";
 import { useRouter } from "next/navigation";
+import { AvatarDropdown } from "./AvatarDropdown/AvatarDropdown";
 
 type Props = { user: User | undefined };
 
@@ -70,10 +71,12 @@ export const Header: React.FC<Props> = ({ user }) => {
             </Box>
             <Box pl="4">
               {user ? (
-                <Avatar
-                  src={user.image ?? undefined}
-                  fallback={user.name?.charAt(0).toUpperCase() ?? ""}
-                  color="gray"
+                <AvatarDropdown
+                  avatar={{
+                    src: user.image ?? undefined,
+                    fallback: user.name?.charAt(0).toUpperCase() ?? "",
+                    color: "gray",
+                  }}
                 />
               ) : (
                 <IconButton
