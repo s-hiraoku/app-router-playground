@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, PropsWithChildren } from "react";
+import React, { ComponentPropsWithoutRef, PropsWithChildren } from "react";
 import styles from "./AvatarDropdown.module.scss";
 import { Avatar, DropdownMenu } from "@radix-ui/themes";
 
@@ -8,7 +8,7 @@ type Props = {
 
 export const AvatarDropdown: React.FC<PropsWithChildren<Props>> = ({
   avatar,
-  children,
+  children: dropdownMenuContent,
 }) => {
   return (
     <DropdownMenu.Root>
@@ -17,17 +17,7 @@ export const AvatarDropdown: React.FC<PropsWithChildren<Props>> = ({
           <Avatar {...avatar} />
         </div>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content size="2">
-        <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
-        <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
-
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
-          Delete
-        </DropdownMenu.Item>
-      </DropdownMenu.Content>
+      {dropdownMenuContent}
     </DropdownMenu.Root>
   );
 };
