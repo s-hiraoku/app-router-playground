@@ -72,9 +72,14 @@ export const signUp = async (
       email,
       password: hashedPassword,
     });
+
+    await signIn("credentials", {
+      email,
+      password,
+    });
   } catch (error) {
-    console.error("Sign up error:", error);
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      console.error("Sign up error (PrismaClientKnownRequestError):", error);
       switch (error.code) {
         case PrismaErrorCodes.UNIQUE_CONSTRAINT_FAILED:
           return {
@@ -88,8 +93,9 @@ export const signUp = async (
             message: `Failed to sign up due to an unexpected error.`,
           };
       }
-    } else if (error instanceof Prisma.PrismaClientUnknownRequestError) {
-      console.error("Sign up error:", error);
+    }
+    if (error instanceof Prisma.PrismaClientUnknownRequestError) {
+      console.error("Sign up error (PrismaClientUnknownRequestError):", error);
       return {
         errors: {},
         message: `Failed to sign up due to an unexpected error.`,
