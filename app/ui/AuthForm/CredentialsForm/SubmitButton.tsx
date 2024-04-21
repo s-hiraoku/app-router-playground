@@ -16,7 +16,8 @@ export const SubmitButton: React.FC<Props> = ({ authAction }) => {
       variant="soft"
       type="submit"
       className={styles.button}
-      disabled={pending}
+      loading={pending}
+      data-loading={pending}
     >
       {buttonText}
     </Button>

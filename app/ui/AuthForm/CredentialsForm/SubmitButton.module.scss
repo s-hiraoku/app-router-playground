@@ -1,4 +1,7 @@
 .button {
   width: 100%;
   cursor: pointer;
+  &[data-loading="true"] {
+    cursor: progress;
+  }
 }
