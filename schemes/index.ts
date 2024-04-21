@@ -8,7 +8,7 @@ export const CredentialsUserScheme = z.object({
     .email({ message: "Please enter a valid email address." }),
   password: z
     .string({ invalid_type_error: "Please enter a password." })
-    .min(6, { message: "Name must be at least 6 characters." }),
+    .min(6, { message: "Invalid password." }),
 });
 
 export const SignUpUserScheme = z.object({
