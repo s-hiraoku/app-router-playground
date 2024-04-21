@@ -6,7 +6,7 @@ import {
   HamburgerMenuIcon,
   MagnifyingGlassIcon,
 } from "@radix-ui/react-icons";
-import { Box, IconButton, Flex, Avatar } from "@radix-ui/themes";
+import { Box, IconButton, Flex, Avatar, DropdownMenu } from "@radix-ui/themes";
 import { DarkModeSelector, DarkModeType } from "./DarkModeSelector";
 import { useSetAtom } from "jotai";
 import { isDarkModeAtom } from "@/app/store";
@@ -14,6 +14,8 @@ import { useSystemDarkMode } from "@/app/hooks/useSystemDarkMode";
 import { User } from "next-auth";
 import { useRouter } from "next/navigation";
 import { AvatarDropdown } from "./AvatarDropdown/AvatarDropdown";
+import { useCallback } from "react";
+import { signOut } from "./actions";
 
 type Props = { user: User | undefined };
 
@@ -30,9 +32,13 @@ export const Header: React.FC<Props> = ({ user }) => {
     setDarkMode(darkMode === "dark" ? true : false);
   };
 
-  const handleLogin = () => {
+  const handleLogin = useCallback(() => {
     router.push("/login");
-  };
+  }, [router]);
+
+  const handleLogout = useCallback(async () => {
+    await signOut({ redirectTo: "/" });
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -77,7 +83,17 @@ export const Header: React.FC<Props> = ({ user }) => {
                     fallback: user.name?.charAt(0).toUpperCase() ?? "",
                     color: "gray",
                   }}
-                />
+                >
+                  <DropdownMenu.Content>
+                    <DropdownMenu.Item shortcut="⌘ S">
+                      Settings
+                    </DropdownMenu.Item>
+                    <DropdownMenu.Separator />
+                    <DropdownMenu.Item shortcut="⌘ E" onClick={handleLogout}>
+                      Log out
+                    </DropdownMenu.Item>
+                  </DropdownMenu.Content>
+                </AvatarDropdown>
               ) : (
                 <IconButton
                   color="gray"
