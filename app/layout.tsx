@@ -22,11 +22,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Provider>
-          <AutoThemeWrapper>
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
-              {children}
-            </ErrorBoundary>
-          </AutoThemeWrapper>
+          <AutoThemeWrapper>{children}</AutoThemeWrapper>
         </Provider>
       </body>
     </html>
