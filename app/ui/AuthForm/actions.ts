@@ -9,7 +9,7 @@ import bcrypt from "bcryptjs";
 import { Prisma } from "@prisma/client";
 import { CredentialsFormState, SignUpFormState } from "./CredentialsForm";
 
-export async function authenticate(
+export async function credentialsSignIn(
   prevState: CredentialsFormState,
   formData: FormData
 ) {
@@ -104,3 +104,11 @@ export const signUp = async (
     throw error;
   }
 };
+
+export async function googleSignIn() {
+  await signIn("google");
+}
+
+export async function gitHubSignIn() {
+  await signIn("github");
+}

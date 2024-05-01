@@ -1,17 +1,17 @@
 "use client";
 
 import { useFormState } from "react-dom";
-import { authenticate } from "../actions";
+import { credentialsSignIn } from "../actions";
 import { initialCredentialFormState } from "./models";
 import styles from "./CredentialsForm.module.scss";
-import { Box, Flex, TextField, Text } from "@radix-ui/themes";
+import { Box, Flex } from "@radix-ui/themes";
 import { FormFieldsForm } from "./FormFieldsForm";
 import { SubmitButton } from "./SubmitButton";
 import { ErrorMessages } from "../../ErrorMessages";
 
 export const CredentialsForm: React.FC = () => {
   const [state, dispatch] = useFormState(
-    authenticate,
+    credentialsSignIn,
     initialCredentialFormState
   );
 

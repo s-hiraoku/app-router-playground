@@ -2,8 +2,8 @@ import { Button, Card, Separator, Text, Flex } from "@radix-ui/themes";
 import styles from "./AuthForm.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { ClientSideImageSwitcher } from "../ClientSideImageSwitcher";
 import { CredentialsForm, AuthAction, SignUpForm } from "./CredentialsForm";
+import { GitHubForm } from "./GitHubForm";
 
 type Props = {
   authAction: AuthAction;
@@ -34,16 +34,7 @@ export const AuthForm: React.FC<Props> = ({ authAction }) => {
             <Image src="/google.svg" alt="Google" width="24" height="24" />
             google
           </Button>
-          <Button variant="outline" className={styles.formButton} size="3">
-            <ClientSideImageSwitcher
-              srcDark="/github-mark-white.svg"
-              srcLight="/github-mark.svg"
-              alt="Github"
-              width="24"
-              height="24"
-            />
-            github
-          </Button>
+          <GitHubForm />
           <Flex
             display="flex"
             align="center"
