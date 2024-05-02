@@ -1,9 +1,9 @@
 import { Button, Card, Separator, Text, Flex } from "@radix-ui/themes";
 import styles from "./AuthForm.module.scss";
-import Image from "next/image";
 import Link from "next/link";
 import { CredentialsForm, AuthAction, SignUpForm } from "./CredentialsForm";
 import { GitHubForm } from "./GitHubForm";
+import { GoogleForm } from "./GoogleForm";
 
 type Props = {
   authAction: AuthAction;
@@ -30,10 +30,7 @@ export const AuthForm: React.FC<Props> = ({ authAction }) => {
           direction="column"
           gap="3"
         >
-          <Button variant="outline" className={styles.formButton} size="3">
-            <Image src="/google.svg" alt="Google" width="24" height="24" />
-            google
-          </Button>
+          <GoogleForm />
           <GitHubForm />
           <Flex
             display="flex"
