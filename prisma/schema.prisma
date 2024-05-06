@@ -70,6 +70,7 @@ model MenuItem {
   updatedAt   DateTime  @updatedAt
   name        String
   iconName    String
+  pathName    String
   owner       User      @relation(fields: [ownerId], references: [id])
   ownerId     String
   category    Category? @relation(fields: [categoryId], references: [id])
