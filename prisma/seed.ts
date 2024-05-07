@@ -13,11 +13,12 @@ async function main() {
     data: {
       email: "test@example.com",
       name: "Test User",
-      password: "",
+      password: "$2a$10$kPai9WiWEj7YgcukzVD5LewIcUmUOG8zy1QmO/bER4FA1xWMleYEC",
       menuItems: {
         create: {
           name: "Home",
           iconName: "HomeIcon",
+          pathName: "./Home",
         },
       },
     },
