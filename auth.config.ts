@@ -54,6 +54,6 @@ export const authConfig = {
     }),
   ],
   adapter: PrismaAdapter(prisma),
-  session: { strategy: "jwt" },
+  session: { strategy: "database" },
   secret: process.env.AUTH_SECRET,
 } satisfies NextAuthConfig;
