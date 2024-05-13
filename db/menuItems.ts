@@ -11,3 +11,20 @@ export const getMenuItemsByUserId = async (userId: string) => {
     throw error;
   }
 };
+
+export const createMenuItem = async (data: {
+  ownerId: string;
+  title: string;
+  url: string;
+  name: string;
+  iconName: string;
+  pathName: string;
+}) => {
+  try {
+    const menuItem = await prisma.menuItem.create({ data });
+    return menuItem;
+  } catch (error) {
+    console.error(`Error creating menu item: ${data}`, error);
+    throw error;
+  }
+};
