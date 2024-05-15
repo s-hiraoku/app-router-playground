@@ -2,11 +2,12 @@ import type { NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { CredentialsUserScheme } from "./schemes";
-import { getUserByEmail } from "@/db/user";
+import { getUserByEmail, getUserById } from "@/db/user";
 import GitHubProvider from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import prisma from "@/lib/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
+import { registerDefaultMenuForNewUser } from "@/services/menuService";
 
 export const authConfig = {
   pages: {
@@ -24,6 +25,22 @@ export const authConfig = {
         return Response.redirect(new URL("/dashboard", nextUrl));
       }
       return true;
+    },
+    async session({ session, token }) {
+      if (token && token.sub) {
+        session.user.id = token.sub;
+      } else {
+        throw new Error("Token does not contain sub property");
+      }
+      return session;
+    },
+    async jwt({ token }) {
+      if (!token.sub) return token;
+      const existingUser = await getUserById(token.sub);
+      if (!existingUser) {
+        await registerDefaultMenuForNewUser(token.sub);
+      }
+      return token;
     },
   },
   providers: [
@@ -54,6 +71,6 @@ export const authConfig = {
     }),
   ],
   adapter: PrismaAdapter(prisma),
-  session: { strategy: "database" },
+  session: { strategy: "jwt" },
   secret: process.env.AUTH_SECRET,
 } satisfies NextAuthConfig;
