@@ -4,9 +4,27 @@ export const registerDefaultMenuForNewUser = async (userId: string) => {
   const defaultMenuItems = [
     {
       ownerId: userId,
-      name: "Home",
-      iconName: "HomeIcon",
-      pathName: "./Home",
+      name: "Dashboard",
+      iconName: "DashboardIcon",
+      pathName: "./dashboard",
+    },
+    {
+      ownerId: userId,
+      name: "Settings",
+      iconName: "GearIcon",
+      pathName: "./settings",
+    },
+    {
+      ownerId: userId,
+      name: "Profile",
+      iconName: "PersonIcon",
+      pathName: "./profile",
+    },
+    {
+      ownerId: userId,
+      name: "Log out",
+      iconName: "ExitIcon",
+      pathName: "./logout",
     },
   ];
 
