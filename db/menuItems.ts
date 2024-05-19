@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 
 export const getMenuItemsByUserId = async (userId: string) => {
   try {
@@ -12,14 +13,7 @@ export const getMenuItemsByUserId = async (userId: string) => {
   }
 };
 
-export const createMenuItem = async (data: {
-  ownerId: string;
-  title: string;
-  url: string;
-  name: string;
-  iconName: string;
-  pathName: string;
-}) => {
+export const createMenuItem = async (data: Prisma.MenuItemCreateInput) => {
   try {
     const menuItem = await prisma.menuItem.create({ data });
     return menuItem;

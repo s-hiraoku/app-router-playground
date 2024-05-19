@@ -2,12 +2,12 @@ import type { NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { CredentialsUserScheme } from "./schemes";
-import { getUserByEmail, getUserById } from "@/db/user";
+import { getUserByEmail } from "@/db/user";
 import GitHubProvider from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import prisma from "@/lib/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { registerDefaultMenuForNewUser } from "@/services/menuService";
+import { registerSidebarItems } from "@/services/sidebarService";
 
 export const authConfig = {
   pages: {
@@ -34,12 +34,17 @@ export const authConfig = {
       }
       return session;
     },
-    async jwt({ token }) {
-      if (!token.sub) return token;
-      const existingUser = await getUserById(token.sub);
-      if (!existingUser) {
-        await registerDefaultMenuForNewUser(token.sub);
+    async jwt({ token, user, trigger }) {
+      if (user && user.id) {
+        if (trigger === "signUp") {
+          console.log("Registering default menu for new user");
+          await registerSidebarItems(user.id);
+        }
       }
+      if (!token || !token.sub) {
+        throw new Error("Token does not contain sub property");
+      }
+
       return token;
     },
   },
