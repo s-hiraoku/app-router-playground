@@ -82,7 +82,7 @@ model Category {
   id            String    @id @default(uuid())
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  name          String
+  name          String    @unique
   menuItems     MenuItem[]
 
   @@map("categories")
