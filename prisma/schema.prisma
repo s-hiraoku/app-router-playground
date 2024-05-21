@@ -42,14 +42,14 @@ model Session {
 model User {
   id            String    @id @default(cuid())
   createdAt     DateTime  @default(now())
-  email         String?    @unique
+  email         String?   @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
   password      String?
   name          String?
-  menuItems     MenuItem[]
+  menuItemRelations UserMenuItemRelation[]
 
   @@map("users")
 }
@@ -70,10 +70,9 @@ model MenuItem {
   name        String
   iconName    String
   pathName    String
-  owner       User      @relation(fields: [ownerId], references: [id])
-  ownerId     String
   category    Category? @relation(fields: [categoryId], references: [id])
   categoryId  String?
+  userMenuItemRelations UserMenuItemRelation[]
 
   @@map("menu_items")
 }
@@ -88,3 +87,15 @@ model Category {
   @@map("categories")
 }
 
+model UserMenuItemRelation {
+  id          String   @id @default(cuid())
+  userId      String
+  menuItemId  String
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  menuItem    MenuItem @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, menuItemId])
+
+  @@map("user_menu_item_relations")
+}
