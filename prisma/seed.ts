@@ -19,15 +19,8 @@ async function deleteAllData(modelName: string) {
   }
 }
 
-async function main() {
-  // delete all data with error handling for missing tables
-  const models = ["userMenuItemRelation", "menuItem", "category", "user"];
-
-  for (const model of models) {
-    await deleteAllData(model);
-  }
-
-  // create a user
+async function createInitialData() {
+  // Create a user
   const user = await prisma.user.create({
     data: {
       email: "test@example.com",
@@ -36,38 +29,40 @@ async function main() {
     },
   });
 
-  // create categories
-  const contentsCategory = await prisma.category.create({
-    data: { name: "Contents" },
+  // Create categories
+  const categories = await prisma.category.createMany({
+    data: [{ name: "Contents" }, { name: "User" }],
   });
 
-  const userCategory = await prisma.category.create({
-    data: { name: "User" },
-  });
+  const createdCategories = await prisma.category.findMany();
+  const contentsCategory = createdCategories.find(
+    (cat) => cat.name === "Contents"
+  );
+  const userCategory = createdCategories.find((cat) => cat.name === "User");
 
   // Add default menu items
   await prisma.menuItem.createMany({
     data: [
       {
-        categoryId: contentsCategory.id,
+        categoryId: contentsCategory?.id,
         name: "Dashboard",
         iconName: "DashboardIcon",
         pathName: "./dashboard",
       },
       {
-        categoryId: contentsCategory.id,
+        categoryId: contentsCategory?.id,
         name: "Settings",
         iconName: "GearIcon",
         pathName: "./settings",
       },
       {
-        categoryId: userCategory.id,
+        categoryId: userCategory?.id,
         name: "Profile",
         iconName: "PersonIcon",
         pathName: "./profile",
       },
       {
-        categoryId: userCategory.id,
+        categoryId: userCategory?.id,
         name: "Log out",
         iconName: "ExitIcon",
         pathName: "./logout",
@@ -77,14 +72,24 @@ async function main() {
 
   // Create user-menu-item relations
   const createdMenuItems = await prisma.menuItem.findMany();
-  for (const menuItem of createdMenuItems) {
-    await prisma.userMenuItemRelation.create({
-      data: {
-        userId: user.id,
-        menuItemId: menuItem.id,
-      },
-    });
+  const userMenuItemRelations = createdMenuItems.map((menuItem) => ({
+    userId: user.id,
+    menuItemId: menuItem.id,
+  }));
+
+  await prisma.userMenuItemRelation.createMany({
+    data: userMenuItemRelations,
+  });
+}
+
+async function main() {
+  const models = ["userMenuItemRelation", "menuItem", "category", "user"];
+
+  for (const model of models) {
+    await deleteAllData(model);
   }
+
+  await createInitialData();
 }
 
 main()
