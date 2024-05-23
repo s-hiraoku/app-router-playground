@@ -4,7 +4,7 @@ import { signIn } from "@/auth";
 import { CredentialsUserScheme, SignUpUserScheme } from "@/schemes";
 import { AuthError } from "next-auth";
 import { PrismaErrorCodes } from "@/types";
-import { createUser } from "@/db/user";
+import { createUser } from "@/db/users";
 import bcrypt from "bcryptjs";
 import { Prisma } from "@prisma/client";
 import { CredentialsFormState, SignUpFormState } from "./CredentialsForm";

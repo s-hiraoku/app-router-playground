@@ -1,10 +1,10 @@
 import styles from "./layout.module.scss";
-import { Sidebar } from "@/app/ui/Sidebar";
+import { SidebarWrapper } from "./SidebarWrapper";
 import { Header } from "@/app/ui/Header";
 import { Flex } from "@radix-ui/themes";
-import { SidebarProvider } from "@/app/ui/Sidebar";
 import { Metadata } from "next";
 import { auth } from "@/auth";
+import { getMenuItemsByUserId } from "@/db/userMenuItemRelations";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,12 +18,12 @@ export default async function AuthenticatedLayout({
 }) {
   const session = await auth();
   const user = session?.user;
+  const items = user?.id ? await getMenuItemsByUserId(user?.id) : [];
+  console.log("items", items);
 
   return (
     <div className={styles.container}>
-      <SidebarProvider>
-        <Sidebar items={[]} />
-      </SidebarProvider>
+      <SidebarWrapper items={items || []} />
       <Flex direction="column" flexGrow="1">
         <Header user={user} />
         <main className={styles.mainContent}>{children}</main>
