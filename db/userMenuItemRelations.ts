@@ -39,7 +39,11 @@ export const getMenuItemsByUserId = async (userId: string) => {
         userId,
       },
       include: {
-        menuItem: true,
+        menuItem: {
+          include: {
+            category: true,
+          },
+        },
       },
     });
     return userMenuItemRelations.map((relation) => relation.menuItem);
