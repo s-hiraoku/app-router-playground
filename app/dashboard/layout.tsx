@@ -19,7 +19,6 @@ export default async function AuthenticatedLayout({
   const session = await auth();
   const user = session?.user;
   const items = user?.id ? await getMenuItemsByUserId(user?.id) : [];
-  console.log("items", items);
 
   return (
     <div className={styles.container}>
