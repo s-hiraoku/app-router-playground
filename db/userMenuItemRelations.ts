@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import { getMenuItems } from "./menuItems";
+import { MenuItem } from "@prisma/client";
 
 export const createUserMenuItemRelationsByUserId = async (userId: string) => {
   try {
@@ -32,6 +33,12 @@ export const createUserMenuItemRelations = async (data: {
   }
 };
 
+export type MenuItemWithCategory = MenuItem & {
+  category: {
+    name: string;
+  };
+};
+
 export const getMenuItemsByUserId = async (userId: string) => {
   try {
     const userMenuItemRelations = await prisma.userMenuItemRelation.findMany({
@@ -49,5 +56,6 @@ export const getMenuItemsByUserId = async (userId: string) => {
     return userMenuItemRelations.map((relation) => relation.menuItem);
   } catch (error) {
     console.error("Failed to get menu items by user id:", error);
+    return [];
   }
 };
