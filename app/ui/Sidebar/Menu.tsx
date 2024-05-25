@@ -11,9 +11,10 @@ import styles from "./Menu.module.scss";
 
 type Props = {
   items: SidebarMenuItems;
+  onItemSelect: (id: SidebarID) => void;
 };
 
-export const Menu: React.FC<Props> = ({ items }) => {
+export const Menu: React.FC<Props> = ({ items, onItemSelect }) => {
   const [activeItem, setActiveItem] = useState<SidebarID>();
 
   useEffect(() => {
@@ -25,6 +26,7 @@ export const Menu: React.FC<Props> = ({ items }) => {
 
   const handleItemClick = useCallback((id: SidebarID) => {
     setActiveItem(id);
+    onItemSelect(id);
   }, []);
 
   return (
