@@ -23,22 +23,3 @@ export const createUser = async (data: {
     throw error;
   }
 };
-
-export const getMenuItemsByUserId = async (userId: string) => {
-  try {
-    const menuItems = await prisma.user.findUnique({
-      where: { id: userId },
-      select: {
-        menuItemRelations: {
-          select: {
-            menuItem: true,
-          },
-        },
-      },
-    });
-    return menuItems;
-  } catch (error) {
-    console.error(`Error fetching menu items by user id: ${userId}`, error);
-    throw error;
-  }
-};
