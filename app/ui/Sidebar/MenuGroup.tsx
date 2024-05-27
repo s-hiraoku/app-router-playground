@@ -3,10 +3,11 @@ import { MenuItem } from "./MenuItem";
 import styles from "./MenuGroup.module.scss";
 import { Heading } from "@radix-ui/themes";
 import { useSidebar } from "./useSidebar";
+import { SidebarID } from "./types";
 
 type Props = {
   title: string;
-  items: ({ id: number } & ComponentProps<typeof MenuItem>)[];
+  items: ({ id: SidebarID } & ComponentProps<typeof MenuItem>)[];
 };
 
 export const MenuGroup: React.FC<Props> = ({ title, items }) => {

@@ -4,11 +4,11 @@ import { MenuItem } from "./MenuItem";
 
 export type SidebarID = SidebarMenuItem["id"];
 
-export type SidebarMenuItemType = { id: number; type: "item" } & ComponentProps<
+export type SidebarMenuItemType = { id: string; type: "item" } & ComponentProps<
   typeof MenuItem
 >;
 export type SidebarMenuGroupType = {
-  id: number;
+  id: string;
   type: "group";
 } & ComponentProps<typeof MenuGroup>;
 
