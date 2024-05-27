@@ -1,5 +1,5 @@
 import styles from "./layout.module.scss";
-import { SidebarWrapper } from "./SidebarWrapper";
+import { SidebarWrapper } from "./_components/SidebarWrapper";
 import { Header } from "@/app/ui/Header";
 import { Flex } from "@radix-ui/themes";
 import { Metadata } from "next";

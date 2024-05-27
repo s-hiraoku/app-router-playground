@@ -11,12 +11,13 @@ import { useCallback, useEffect, useState } from "react";
 import * as Icons from "@radix-ui/react-icons";
 import { MenuItemWithCategory } from "@/db/userMenuItemRelations";
 import { MenuItem } from "@prisma/client";
+import { useRouter } from "next/navigation";
 
 type Props = {
   items: Array<MenuItemWithCategory | MenuItem>;
 };
 
-type WithPathName<T> = { pathName: string } & T;
+type SidebarInfo = { id: SidebarID; pathName: string };
 
 const getIconComponent = (iconName: string): React.ReactNode => {
   const IconComponent = Icons[iconName as keyof typeof Icons];
@@ -34,18 +35,18 @@ const convertMenuItemsToSidebarItems = (
       );
       if (category) {
         category.items.push({
-          id: Number(item.id),
+          id: item.id,
           label: item.name,
           icon: getIconComponent(item.iconName),
         });
       } else {
         acc.push({
-          id: Number(item.categoryId),
+          id: item.categoryId ?? "",
           title: item.category.name,
           type: "group",
           items: [
             {
-              id: Number(item.id),
+              id: item.id,
               label: item.name,
               icon: getIconComponent(item.iconName),
             },
@@ -57,7 +58,7 @@ const convertMenuItemsToSidebarItems = (
   }
   return items.map((item) => {
     return {
-      id: Number(item.id),
+      id: item.id,
       type: "item",
       label: item.name,
       icon: getIconComponent(item.iconName),
@@ -65,16 +66,34 @@ const convertMenuItemsToSidebarItems = (
   });
 };
 
-export const SidebarWrapper: React.FC<Props> = async ({ items }) => {
-  // const [sideMenuItems, setSideMenuItems] =
-  //   useState<SidebarMenuItemWithPathNameArray>(convertItems(items));
+const createSidebarInfoItems = (
+  items: Array<MenuItemWithCategory | MenuItem>
+) => {
+  return items.map((item) => {
+    return {
+      id: item.id,
+      pathName: item.pathName,
+    };
+  });
+};
 
-  // useEffect(() => {
-  //   setSideMenuItems(convertItems(items));
-  // }, [items]);
+export const SidebarWrapper: React.FC<Props> = ({ items }) => {
+  const [sidebarInfoItems, setSideMenuItems] = useState<SidebarInfo[]>(
+    createSidebarInfoItems(items)
+  );
+  const router = useRouter();
+
+  useEffect(() => {
+    setSideMenuItems(createSidebarInfoItems(items));
+  }, [items]);
 
   const handleItemSelect = useCallback((id: SidebarID) => {
-    console.log(id);
+    const selectedItem = sidebarInfoItems.find((item) => item.id === id);
+    if (selectedItem && selectedItem.pathName) {
+      console.log("pushing to", selectedItem.pathName);
+      // router.push(selectedItem.pathName);
+      router.push("/settings");
+    }
   }, []);
 
   return (
