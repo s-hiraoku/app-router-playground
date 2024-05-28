@@ -1,4 +1,4 @@
-import { AuthForm } from "@/app/ui/AuthForm";
+import { AuthForm } from "@/app/_ui/AuthForm";
 import styles from "./page.module.scss";
 
 export default function LoginPage() {

@@ -5,8 +5,8 @@ import {
   Sidebar,
   SidebarID,
   SidebarMenuGroupType,
-} from "@/app/ui/Sidebar";
-import { SidebarMenuItems } from "@/app/ui/Sidebar";
+} from "@/app/_ui/Sidebar";
+import { SidebarMenuItems } from "@/app/_ui/Sidebar";
 import { useCallback, useEffect, useState } from "react";
 import * as Icons from "@radix-ui/react-icons";
 import { MenuItemWithCategory } from "@/db/userMenuItemRelations";

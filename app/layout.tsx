@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { AutoThemeWrapper } from "@/app/ui/AutoThemeWrapper";
-import "@/app/ui/global.css";
+import { AutoThemeWrapper } from "@/app/_ui/AutoThemeWrapper";
+import "@/app/_ui/global.css";
 import { Provider } from "jotai";
-import { ErrorBoundary } from "react-error-boundary";
-import { ErrorFallback } from "@/app/ui/ErrorFallback";
 
 const inter = Inter({ subsets: ["latin"] });
 

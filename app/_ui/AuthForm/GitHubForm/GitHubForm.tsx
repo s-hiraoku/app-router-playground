@@ -1,6 +1,6 @@
 import { Button } from "@radix-ui/themes";
 import styles from "./GitHubForm.module.scss";
-import { ClientSideImageSwitcher } from "@/app/ui/ClientSideImageSwitcher";
+import { ClientSideImageSwitcher } from "@/app/_ui/ClientSideImageSwitcher";
 import { gitHubSignIn } from "../actions";
 
 export const GitHubForm: React.FC = () => {

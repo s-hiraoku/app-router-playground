@@ -1,4 +1,4 @@
-import { Header } from "@/app/ui/Header";
+import { Header } from "@/app/_ui/Header";
 
 export default async function Page() {
   return (

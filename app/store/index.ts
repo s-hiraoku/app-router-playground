@@ -1,6 +1,6 @@
 import { atomWithToggle, getPrefersDarkMode } from "./utils";
 import { atom } from "jotai";
-import { SidebarMenuItems } from "@/app/ui/Sidebar";
+import { SidebarMenuItems } from "@/app/_ui/Sidebar";
 import { User } from "next-auth";
 
 const prefersDarkMode = getPrefersDarkMode();

@@ -1,6 +1,6 @@
 import styles from "./layout.module.scss";
 import { SidebarWrapper } from "./_components/SidebarWrapper";
-import { Header } from "@/app/ui/Header";
+import { Header } from "@/app/_ui/Header";
 import { Flex } from "@radix-ui/themes";
 import { Metadata } from "next";
 import { auth } from "@/auth";
