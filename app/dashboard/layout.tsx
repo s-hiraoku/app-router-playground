@@ -22,7 +22,7 @@ export default async function AuthenticatedLayout({
 
   return (
     <div className={styles.container}>
-      <SidebarWrapper items={items || []} />
+      <SidebarWrapper items={items || []} basePath="/dashboard" />
       <Flex direction="column" flexGrow="1">
         <Header user={user} />
         <main className={styles.mainContent}>{children}</main>

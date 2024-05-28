@@ -1,7 +1,7 @@
 import styles from "./layout.module.scss";
 import { Flex } from "@radix-ui/themes";
 import { Metadata } from "next";
-import { Header } from "@/app//ui/Header";
+import { Header } from "@/app/ui/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",

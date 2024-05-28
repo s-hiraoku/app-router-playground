@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 
 type Props = {
   items: Array<MenuItemWithCategory | MenuItem>;
+  basePath: string;
 };
 
 type SidebarInfo = { id: SidebarID; pathName: string };
@@ -77,7 +78,7 @@ const createSidebarInfoItems = (
   });
 };
 
-export const SidebarWrapper: React.FC<Props> = ({ items }) => {
+export const SidebarWrapper: React.FC<Props> = ({ items, basePath }) => {
   const [sidebarInfoItems, setSideMenuItems] = useState<SidebarInfo[]>(
     createSidebarInfoItems(items)
   );
@@ -90,9 +91,7 @@ export const SidebarWrapper: React.FC<Props> = ({ items }) => {
   const handleItemSelect = useCallback((id: SidebarID) => {
     const selectedItem = sidebarInfoItems.find((item) => item.id === id);
     if (selectedItem && selectedItem.pathName) {
-      console.log("pushing to", selectedItem.pathName);
-      // router.push(selectedItem.pathName);
-      router.push("/settings");
+      router.push(`${basePath}${selectedItem.pathName}`);
     }
   }, []);
 
