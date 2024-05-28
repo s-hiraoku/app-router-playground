@@ -90,7 +90,7 @@ export const SidebarWrapper: React.FC<Props> = ({ items, basePath }) => {
 
   const handleItemSelect = useCallback((id: SidebarID) => {
     const selectedItem = sidebarInfoItems.find((item) => item.id === id);
-    if (selectedItem && selectedItem.pathName) {
+    if (selectedItem && selectedItem.pathName != null) {
       router.push(`${basePath}${selectedItem.pathName}`);
     }
   }, []);
