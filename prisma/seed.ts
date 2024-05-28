@@ -47,7 +47,7 @@ async function createInitialData() {
         categoryId: contentsCategory?.id,
         name: "Dashboard",
         iconName: "DashboardIcon",
-        pathName: "/dashboard",
+        pathName: "",
       },
       {
         categoryId: contentsCategory?.id,
