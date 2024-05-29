@@ -12,6 +12,7 @@
 
   &:hover,
   &:focus {
+    cursor: pointer;
     text-decoration: none;
     background-color: var(--accent-a4);
   }
