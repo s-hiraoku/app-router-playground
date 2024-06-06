@@ -45,6 +45,7 @@ export const MenuItem: React.FC<Props> = ({
         onClick={handleClick}
         className={styles.item}
         data-disabled={disabled}
+        data-collapsed={collapsed}
       >
         <span className={styles.content}>
           {icon && <span className={styles.icon}>{icon}</span>}

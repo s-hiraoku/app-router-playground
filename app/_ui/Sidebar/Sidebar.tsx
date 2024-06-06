@@ -23,7 +23,7 @@ export const Sidebar: React.FC<Props> = ({ items, onItemSelect }) => {
   return (
     <aside className={styles.sidebar} data-collapsed={collapsed}>
       <nav className={styles.nav}>
-        <ScrollArea>
+        <ScrollArea type="auto" scrollbars="vertical">
           <Menu items={items} onItemSelect={onItemSelect} />
         </ScrollArea>
       </nav>

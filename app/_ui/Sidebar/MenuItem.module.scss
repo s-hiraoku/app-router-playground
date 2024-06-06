@@ -23,6 +23,10 @@
     color: var(--gray-a8);
     background-color: var(--gray-2);
   }
+
+  &[data-collapsed="true"] {
+    width: fit-content;
+  }
 }
 
 .activeIndicator {
