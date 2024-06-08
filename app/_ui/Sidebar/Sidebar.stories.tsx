@@ -25,17 +25,19 @@ export const Default = Template.bind({});
 Default.args = {
   items: [
     {
-      id: 1,
+      id: "1",
+      type: "group",
       title: "General",
       items: [
         {
-          id: 1,
+          id: "1",
+
           icon: <DashboardIcon />,
           label: "Dashboard",
           onClick: action("clicked Dashboard"),
         },
         {
-          id: 2,
+          id: "2",
           icon: <GearIcon />,
           label: "Settings",
           onClick: action("clicked Settings"),
@@ -43,17 +45,18 @@ Default.args = {
       ],
     },
     {
-      id: 2,
+      id: "2",
+      type: "group",
       title: "User",
       items: [
         {
-          id: 3,
+          id: "3",
           icon: <PersonIcon />,
           label: "Profile",
           onClick: action("clicked Profile"),
         },
         {
-          id: 4,
+          id: "4",
           icon: <ExitIcon />,
           label: "Log out",
           onClick: action("clicked Log out"),
@@ -67,14 +70,16 @@ export const WithIcons = Template.bind({});
 WithIcons.args = {
   items: [
     {
-      id: 1,
+      id: "1",
+      type: "item",
       icon: <HomeIcon />,
       label: "Home",
       active: true,
       onClick: action("clicked Home"),
     },
     {
-      id: 2,
+      id: "2",
+      type: "item",
       icon: <RocketIcon />,
       label: "About",
       disabled: true,
