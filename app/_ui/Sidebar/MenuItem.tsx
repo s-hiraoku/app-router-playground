@@ -1,4 +1,4 @@
-import { Link } from "@radix-ui/themes";
+import { Link, Tooltip } from "@radix-ui/themes";
 import { ReactNode } from "react";
 import styles from "./MenuItem.module.scss";
 import { useSidebar } from "./useSidebar";
@@ -10,7 +10,7 @@ type Props = {
   label: string;
   active?: boolean;
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
 const ActiveIndicator: React.FC<{ active: boolean }> = ({ active }) => (
@@ -33,37 +33,39 @@ export const MenuItem: React.FC<Props> = ({
       e.preventDefault();
       return;
     }
-    onClick?.();
+    onClick?.(e);
   };
 
   return (
     <li className={styles.container}>
       <ActiveIndicator active={active} />
-      <Link
-        role="button"
-        ml="1"
-        onClick={handleClick}
-        className={styles.item}
-        data-disabled={disabled}
-        data-collapsed={collapsed}
-      >
-        <span className={styles.content}>
-          {icon && <span className={styles.icon}>{icon}</span>}
-          {prefix && (
-            <span className={styles.prefix} data-collapsed={collapsed}>
-              {prefix}
+      <Tooltip content={label} side="right">
+        <Link
+          role="button"
+          ml="1"
+          onClick={handleClick}
+          className={styles.item}
+          data-disabled={disabled}
+          data-collapsed={collapsed}
+        >
+          <span className={styles.content}>
+            {icon && <span className={styles.icon}>{icon}</span>}
+            {prefix && (
+              <span className={styles.prefix} data-collapsed={collapsed}>
+                {prefix}
+              </span>
+            )}
+            <span className={styles.label} data-collapsed={collapsed}>
+              {label}
             </span>
-          )}
-          <span className={styles.label} data-collapsed={collapsed}>
-            {label}
+            {suffix && (
+              <span className={styles.suffix} data-collapsed={collapsed}>
+                {suffix}
+              </span>
+            )}
           </span>
-          {suffix && (
-            <span className={styles.suffix} data-collapsed={collapsed}>
-              {suffix}
-            </span>
-          )}
-        </span>
-      </Link>
+        </Link>
+      </Tooltip>
     </li>
   );
 };
