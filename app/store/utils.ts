@@ -10,6 +10,7 @@ export const atomWithToggle = (initialValue?: boolean) => {
   return anAtom;
 };
 
+// TODO: Delete getPrefersDarkMode
 export const getPrefersDarkMode = () => {
   if (typeof window !== "undefined") {
     return window.matchMedia(COLOR_SCHEME_QUERY).matches;

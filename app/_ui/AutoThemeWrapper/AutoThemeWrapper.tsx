@@ -1,27 +1,19 @@
 "use client";
+
 import { PropsWithChildren } from "react";
 import { Theme, ThemePanel } from "@radix-ui/themes";
-import { Inter } from "next/font/google";
 import { isDarkModeAtom } from "@/app/store";
 import { useAtomValue } from "jotai";
+import { ThemeProvider } from "next-themes";
 
-const inter = Inter({ subsets: ["latin"] });
-
-type Props = {};
-
-export const AutoThemeWrapper: React.FC<PropsWithChildren<Props>> = ({
-  children,
-}) => {
+export const AutoThemeWrapper: React.FC<PropsWithChildren> = ({ children }) => {
   const appearance = useAtomValue(isDarkModeAtom);
   return (
-    <Theme
-      appearance={appearance ? "dark" : "light"}
-      accentColor="mint"
-      grayColor="olive"
-      panelBackground="solid"
-    >
-      {children}
-      <ThemePanel />
-    </Theme>
+    <ThemeProvider attribute="class" defaultTheme="system">
+      <Theme accentColor="mint" grayColor="olive" panelBackground="solid">
+        {children}
+        <ThemePanel />
+      </Theme>
+    </ThemeProvider>
   );
 };

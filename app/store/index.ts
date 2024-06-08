@@ -3,6 +3,7 @@ import { atom } from "jotai";
 import { SidebarMenuItems } from "@/app/_ui/Sidebar";
 import { User } from "next-auth";
 
+// TODO: Delete prefersDarkMode and isDarkModeAtom
 const prefersDarkMode = getPrefersDarkMode();
 export const isDarkModeAtom = atomWithToggle(prefersDarkMode);
 
