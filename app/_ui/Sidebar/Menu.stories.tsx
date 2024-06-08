@@ -89,14 +89,16 @@ export const WithIconsAndStatus = Template.bind({});
 WithIconsAndStatus.args = {
   items: [
     {
-      id: 1,
+      id: "1",
+      type: "item",
       icon: <HomeIcon />,
       label: "Home",
       active: true,
       onClick: action("clicked Home"),
     },
     {
-      id: 2,
+      id: "2",
+      type: "item",
       icon: <RocketIcon />,
       label: "About",
       disabled: true,
