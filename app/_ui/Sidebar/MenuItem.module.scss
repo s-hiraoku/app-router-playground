@@ -56,9 +56,6 @@
   display: inline;
   opacity: 1;
   white-space: nowrap;
-  transition:
-    opacity 0.4s ease-in-out,
-    display 0.4s ease-in-out;
 
   &[data-collapsed="true"] {
     animation: fadeOut 0.4s forwards;
