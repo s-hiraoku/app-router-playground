@@ -1,11 +1,7 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { MenuGroup } from "./MenuGroup";
-import {
-  FileIcon,
-  HomeIcon,
-  LockClosedIcon,
-} from "@radix-ui/react-icons";
+import { FileIcon, HomeIcon, LockClosedIcon } from "@radix-ui/react-icons";
 import { Badge } from "@radix-ui/themes";
 import { SidebarProvider } from "./SidebarProvider";
 
@@ -24,7 +20,7 @@ Default.args = {
   title: "サンプルメニュー",
   items: [
     {
-      id: 1,
+      id: "1",
       label: "アイテム1",
       icon: <HomeIcon />,
       prefix: "",
@@ -34,7 +30,7 @@ Default.args = {
       onClick: action("アイテム1がクリックされました"),
     },
     {
-      id: 2,
+      id: "2",
       label: "アイテム2",
       icon: <FileIcon />,
       prefix: "",
@@ -48,7 +44,7 @@ Default.args = {
       onClick: action("アイテム2がクリックされました"),
     },
     {
-      id: 3,
+      id: "3",
       label: "アイテム3",
       icon: <LockClosedIcon />,
       active: false,
