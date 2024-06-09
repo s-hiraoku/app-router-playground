@@ -62,13 +62,18 @@ export const DarkModeSelector: React.FC<Props> = ({
     onDarkModeChange?.(newTheme);
   };
 
+  const validThemes: DarkModeType[] = ["system", "dark", "light"];
+  const currentTheme = validThemes.includes(theme as DarkModeType)
+    ? (theme as DarkModeType)
+    : "system";
+
   return (
     <DropdownMenu.Root>
-      <Tooltip content={tooltipContent(theme as DarkModeType)} side="bottom">
+      <Tooltip content={tooltipContent(currentTheme)} side="bottom">
         <DropdownMenu.Trigger>
           <IconButton className={styles.button} {...props}>
             <Flex gap="2" align="center">
-              {darkModeIcon(theme as DarkModeType)}
+              {darkModeIcon(currentTheme)}
               <DropdownMenu.TriggerIcon />
             </Flex>
           </IconButton>
