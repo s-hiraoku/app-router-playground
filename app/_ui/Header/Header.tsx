@@ -6,7 +6,7 @@ import {
   HamburgerMenuIcon,
   MagnifyingGlassIcon,
 } from "@radix-ui/react-icons";
-import { Box, IconButton, Flex, Avatar, DropdownMenu } from "@radix-ui/themes";
+import { Box, IconButton, Flex, DropdownMenu } from "@radix-ui/themes";
 import { DarkModeSelector, DarkModeType } from "./DarkModeSelector";
 import { useSetAtom } from "jotai";
 import { isDarkModeAtom } from "@/app/store";

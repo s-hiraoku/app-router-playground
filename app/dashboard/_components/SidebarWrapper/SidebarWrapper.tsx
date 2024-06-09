@@ -28,7 +28,10 @@ const getIconComponent = (iconName: string): React.ReactNode => {
 const convertMenuItemsToSidebarItems = (
   items: Array<MenuItemWithCategory | MenuItem>
 ): SidebarMenuItems => {
-  if (items.length >= 0 && items[0].hasOwnProperty("category")) {
+  if (
+    items.length >= 0 &&
+    Object.prototype.hasOwnProperty.call(items[0], "category")
+  ) {
     const menuItems = items as MenuItemWithCategory[];
     return menuItems.reduce((acc, item) => {
       const category = acc.find(

@@ -12,7 +12,7 @@ export default function GuestLayout({
   children,
 }: {
   children: React.ReactNode;
-}) {
+}): JSX.Element {
   return (
     <div className={styles.container}>
       <Flex direction="column" flexGrow="1">

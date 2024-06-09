@@ -5,7 +5,7 @@ import styles from "./ErrorFallback.module.scss";
 import { Callout, Heading } from "@radix-ui/themes";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
 
-type Props = {} & FallbackProps;
+type Props = FallbackProps;
 
 export const ErrorFallback: React.FC<Props> = ({ error }) => {
   return (

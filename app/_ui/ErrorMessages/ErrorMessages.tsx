@@ -8,27 +8,38 @@ type Props = {
   role?: string;
 };
 
-export const ErrorMessages = memo(
-  ({ errors, id, ariaDescribedby, role = "alert" }: Props) => {
-    return (
-      <div
-        className={styles.errorMessages}
-        id={id}
-        aria-describedby={ariaDescribedby}
-        role={role}
-      >
-        {errors.map((error) => (
-          <ErrorMessage key={error} message={error} />
-        ))}
-      </div>
-    );
-  }
-);
+const ErrorMessagesComponent = ({
+  errors,
+  id,
+  ariaDescribedby,
+  role = "alert",
+}: Props) => {
+  return (
+    <div
+      className={styles.errorMessages}
+      id={id}
+      aria-describedby={ariaDescribedby}
+      role={role}
+    >
+      {errors.map((error) => (
+        <ErrorMessage key={error} message={error} />
+      ))}
+    </div>
+  );
+};
+
+ErrorMessagesComponent.displayName = "ErrorMessages";
+
+export const ErrorMessages = memo(ErrorMessagesComponent);
 
 type ErrorMessageProps = {
   message: string;
 };
 
-export const ErrorMessage = memo(({ message }: ErrorMessageProps) => (
+const ErrorMessageComponent = ({ message }: ErrorMessageProps) => (
   <div className={styles.errorMessage}>{message}</div>
-));
+);
+
+ErrorMessageComponent.displayName = "ErrorMessage";
+
+export const ErrorMessage = memo(ErrorMessageComponent);
