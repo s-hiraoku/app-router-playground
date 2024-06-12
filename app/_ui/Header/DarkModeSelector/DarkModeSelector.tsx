@@ -23,7 +23,7 @@ const tooltipContent = (darkMode: DarkModeType) => {
     case "system":
       return "System";
     case "dark":
-      return "dark";
+      return "Dark";
     case "light":
       return "Light";
     default:
