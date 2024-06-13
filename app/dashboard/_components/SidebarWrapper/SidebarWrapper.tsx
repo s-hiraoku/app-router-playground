@@ -91,12 +91,15 @@ export const SidebarWrapper: React.FC<Props> = ({ items, basePath }) => {
     setSideMenuItems(createSidebarInfoItems(items));
   }, [items]);
 
-  const handleItemSelect = useCallback((id: SidebarID) => {
-    const selectedItem = sidebarInfoItems.find((item) => item.id === id);
-    if (selectedItem && selectedItem.pathName != null) {
-      router.push(`${basePath}${selectedItem.pathName}`);
-    }
-  }, []);
+  const handleItemSelect = useCallback(
+    (id: SidebarID) => {
+      const selectedItem = sidebarInfoItems.find((item) => item.id === id);
+      if (selectedItem && selectedItem.pathName != null) {
+        router.push(`${basePath}${selectedItem.pathName}`);
+      }
+    },
+    [basePath, router, sidebarInfoItems]
+  );
 
   return (
     <div>
