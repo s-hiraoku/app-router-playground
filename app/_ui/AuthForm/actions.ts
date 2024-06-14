@@ -8,6 +8,7 @@ import { createUser } from "@/db/users";
 import bcrypt from "bcryptjs";
 import { Prisma } from "@prisma/client";
 import { CredentialsFormState, SignUpFormState } from "./CredentialsForm";
+import { registerSidebarItems } from "@/services/sidebarService";
 
 export async function credentialsSignIn(
   prevState: CredentialsFormState,
@@ -67,11 +68,13 @@ export const signUp = async (
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    await createUser({
+    const user = await createUser({
       name: username,
       email,
       password: hashedPassword,
     });
+
+    await registerSidebarItems(user.id);
 
     await signIn("credentials", {
       email,

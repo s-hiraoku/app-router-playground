@@ -1,4 +1,4 @@
-import type { NextAuthConfig } from "next-auth";
+import type { Account, NextAuthConfig, Profile, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { CredentialsUserScheme } from "./schemes";
@@ -8,6 +8,50 @@ import Google from "next-auth/providers/google";
 import prisma from "@/lib/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { registerSidebarItems } from "@/services/sidebarService";
+import { JWT } from "next-auth/jwt";
+import { AdapterUser } from "next-auth/adapters";
+
+// Session strategy setting
+// https://github.com/nextauthjs/next-auth/discussions/4394
+// jwt when using Credentials authentication.
+const sessionStrategy = "jwt"; // Set to either "database" or "jwt"
+
+const jwtForSessionStrategyDatabase = async ({
+  token,
+  user,
+  // Check why was the jwt callback invoked. Possible reasons are:
+  // user sign-in: First time the callback is invoked, user, profile and account will be present.
+  // user sign-up: a user is created for the first time in the database (when AuthConfig.session.strategy is set to "database")
+  // update event: Triggered by the useSession().update method. In the latter case, trigger will be undefined.
+  trigger,
+}: {
+  token: JWT;
+  user?: User | AdapterUser;
+  account?: Account | null;
+  profile?: Profile;
+  trigger?: "signIn" | "signUp" | "update" | undefined;
+}): Promise<JWT> => {
+  if (user && user.id && trigger === "signUp") {
+    console.log("Registering default menu for new user");
+    await registerSidebarItems(user.id);
+  }
+  if (!token || !token.sub) {
+    throw new Error("Token does not contain sub property");
+  }
+
+  return token;
+};
+
+const jwtForSessionStrategyJwt = async ({
+  token,
+}: {
+  token: JWT;
+}): Promise<JWT> => {
+  if (!token || !token.sub) {
+    throw new Error("Token does not contain sub property");
+  }
+  return token;
+};
 
 export const authConfig = {
   pages: {
@@ -34,19 +78,10 @@ export const authConfig = {
       }
       return session;
     },
-    async jwt({ token, user, trigger }) {
-      if (user && user.id) {
-        if (trigger === "signUp") {
-          console.log("Registering default menu for new user");
-          await registerSidebarItems(user.id);
-        }
-      }
-      if (!token || !token.sub) {
-        throw new Error("Token does not contain sub property");
-      }
-
-      return token;
-    },
+    jwt:
+      sessionStrategy === "jwt"
+        ? jwtForSessionStrategyJwt
+        : jwtForSessionStrategyDatabase,
   },
   providers: [
     CredentialsProvider({
@@ -76,6 +111,6 @@ export const authConfig = {
     }),
   ],
   adapter: PrismaAdapter(prisma),
-  session: { strategy: "jwt" },
+  session: { strategy: sessionStrategy },
   secret: process.env.AUTH_SECRET,
 } satisfies NextAuthConfig;

@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 async function deleteAllData(modelName: string) {
   try {
-    // @ts-ignore: Ignore type checking for dynamic model access
+    // @ts-expect-error: Ignore type checking for dynamic model access
     await prisma[modelName].deleteMany();
   } catch (e) {
     if (
@@ -25,12 +25,13 @@ async function createInitialData() {
     data: {
       email: "test@example.com",
       name: "Test User",
+      // 12345678
       password: "$2a$10$kPai9WiWEj7YgcukzVD5LewIcUmUOG8zy1QmO/bER4FA1xWMleYEC",
     },
   });
 
   // Create categories
-  const categories = await prisma.category.createMany({
+  await prisma.category.createMany({
     data: [{ name: "Contents" }, { name: "User" }],
   });
 
@@ -60,12 +61,6 @@ async function createInitialData() {
         name: "Profile",
         iconName: "PersonIcon",
         pathName: "/profile",
-      },
-      {
-        categoryId: userCategory?.id,
-        name: "Log out",
-        iconName: "ExitIcon",
-        pathName: "/logout",
       },
     ],
   });
