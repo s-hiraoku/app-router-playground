@@ -4,7 +4,7 @@ import { signIn } from "@/auth";
 import { CredentialsUserScheme, SignUpUserScheme } from "@/schemes";
 import { AuthError } from "next-auth";
 import { PrismaErrorCodes } from "@/types";
-import { createUser } from "@/db/users";
+import { createUser, getUserByEmail } from "@/db/users";
 import bcrypt from "bcryptjs";
 import { Prisma } from "@prisma/client";
 import { CredentialsFormState, SignUpFormState } from "./CredentialsForm";
@@ -67,6 +67,13 @@ export const signUp = async (
   const { email, password, username } = result.data;
 
   try {
+    const existingUser = await getUserByEmail(email);
+    if (existingUser) {
+      return {
+        errors: {},
+        message: `${email} already exists.`,
+      };
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await createUser({
       name: username,
