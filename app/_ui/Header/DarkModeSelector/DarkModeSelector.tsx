@@ -2,8 +2,7 @@ import { SunIcon, MoonIcon, DesktopIcon } from "@radix-ui/react-icons";
 import styles from "./DarkModeSelector.module.scss";
 import { IconButton, Tooltip, DropdownMenu, Flex } from "@radix-ui/themes";
 import { useTheme } from "next-themes";
-
-export type DarkModeType = "system" | "dark" | "light";
+import { DarkModeType } from "@/types";
 
 const darkModeIcon = (darkMode: DarkModeType) => {
   switch (darkMode) {
