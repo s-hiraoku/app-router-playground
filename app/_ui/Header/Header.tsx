@@ -7,7 +7,7 @@ import {
   MagnifyingGlassIcon,
 } from "@radix-ui/react-icons";
 import { Box, IconButton, Flex, DropdownMenu } from "@radix-ui/themes";
-import { DarkModeSelector, DarkModeType } from "./DarkModeSelector";
+import { DarkModeSelector } from "./DarkModeSelector";
 import { useSetAtom } from "jotai";
 import { isDarkModeAtom } from "@/app/store";
 import { useSystemDarkMode } from "@/app/hooks/useSystemDarkMode";
@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { AvatarDropdown } from "./AvatarDropdown/AvatarDropdown";
 import { useCallback } from "react";
 import { signOut } from "./actions";
+import { DarkModeType } from "@/types";
 
 type Props = { user: User | undefined };
 
