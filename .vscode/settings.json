@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["cuid", "datasource", "markuplint", "nextjs", "Signin"]
+  "cSpell.words": [
+    "cuid",
+    "datasource",
+    "markuplint",
+    "nextjs",
+    "Signin",
+    "trpc"
+  ]
 }
