@@ -8,7 +8,6 @@ import Google from "next-auth/providers/google";
 import prisma from "@/lib/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { registerSidebarItems } from "@/services/sidebarService";
-import { createUserMenuItemRelations } from "./db/userMenuItemRelations";
 
 export const authConfig = {
   pages: {
@@ -17,17 +16,6 @@ export const authConfig = {
     error: "/error",
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
-      const isLoggedIn = !!auth?.user;
-      const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
-      if (isOnDashboard) {
-        if (isLoggedIn) return true;
-        return false;
-      } else if (isLoggedIn) {
-        return Response.redirect(new URL("/dashboard", nextUrl));
-      }
-      return true;
-    },
     async session({ session, token }) {
       if (token && token.sub) {
         session.user.id = token.sub;
@@ -73,7 +61,7 @@ export const authConfig = {
           return true;
         } catch (error) {
           console.error("Error linking account:", error);
-          return "/auth/error?error=OAuthAccountNotLinked";
+          return false;
         }
       }
       return true;
