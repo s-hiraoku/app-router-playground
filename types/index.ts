@@ -1,3 +1,3 @@
-export * from "./radix-ui";
+export * from "./radixUi";
 export * from "./dbDefinitions";
-export * from "./app";
+export * from "./nextThemes";
