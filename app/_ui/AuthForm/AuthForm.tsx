@@ -4,6 +4,7 @@ import Link from "next/link";
 import { CredentialsForm, AuthAction, SignUpForm } from "./CredentialsForm";
 import { GitHubForm } from "./GitHubForm";
 import { GoogleForm } from "./GoogleForm";
+import { LoginError } from "./LoginError";
 
 type Props = {
   authAction: AuthAction;
@@ -47,6 +48,7 @@ export const AuthForm: React.FC<Props> = ({ authAction }) => {
             <Separator size="4" />
           </Flex>
           {isLogin ? <CredentialsForm /> : <SignUpForm />}
+          <LoginError />
           <Text as="div" size="2" mt="2">
             {isLogin ? "Don't have an account?" : "Already have an account?"}
             <Link href={switchModeLink}>
