@@ -5,7 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { ErrorMessages } from "@/app/_ui/ErrorMessages";
 
 const errorMessages: { [key: string]: string } = {
-  OAuthAccountNotLinked: "Email already in use with a different provider!",
+  OAuthAccountNotLinked:
+    "This email address is already in use with another provider.",
   OAuthCallbackError: "There was an error during the OAuth callback!",
 };
 

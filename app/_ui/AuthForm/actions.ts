@@ -39,7 +39,9 @@ export async function credentialsSignIn(
         case "CallbackRouteError":
           return {
             errors: {},
-            message: error.cause?.err?.message,
+            message:
+              error.cause?.err?.message ??
+              "Something went wrong with CallbackRouteError.",
           };
         default:
           return {
