@@ -74,14 +74,17 @@ export const authConfig = {
 
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
+
           const user = await getUserByEmail(email);
-          if (!user) return null;
+          if (!user) {
+            throw new Error("User not registered yet. Please sign up.");
+          }
+
           const passwordsMatch =
             user.password && (await bcrypt.compare(password, user.password));
           if (passwordsMatch) return user;
+          if (!passwordsMatch) throw new Error("Password is incorrect.");
         }
-
-        console.log("Invalid credentials");
         return null;
       },
     }),
