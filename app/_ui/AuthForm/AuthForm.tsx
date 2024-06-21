@@ -18,6 +18,7 @@ export const AuthForm: React.FC<Props> = ({ authAction }) => {
 
   return (
     <div>
+      <LoginError />
       <Flex justify="center" p="4">
         <Text as="div" size="7">
           {title}
@@ -48,7 +49,6 @@ export const AuthForm: React.FC<Props> = ({ authAction }) => {
             <Separator size="4" />
           </Flex>
           {isLogin ? <CredentialsForm /> : <SignUpForm />}
-          <LoginError />
           <Text as="div" size="2" mt="2">
             {isLogin ? "Don't have an account?" : "Already have an account?"}
             <Link href={switchModeLink}>
