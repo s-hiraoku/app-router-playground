@@ -6,6 +6,7 @@ type Props = {
   id?: string;
   ariaDescribedby?: string;
   role?: string;
+  alignCenter?: boolean;
 };
 
 const ErrorMessagesComponent = ({
@@ -13,6 +14,7 @@ const ErrorMessagesComponent = ({
   id,
   ariaDescribedby,
   role = "alert",
+  alignCenter,
 }: Props) => {
   return (
     <div
@@ -22,7 +24,7 @@ const ErrorMessagesComponent = ({
       role={role}
     >
       {errors.map((error) => (
-        <ErrorMessage key={error} message={error} />
+        <ErrorMessage key={error} message={error} alignCenter={alignCenter} />
       ))}
     </div>
   );
@@ -34,10 +36,16 @@ export const ErrorMessages = memo(ErrorMessagesComponent);
 
 type ErrorMessageProps = {
   message: string;
+  alignCenter?: boolean;
 };
 
-const ErrorMessageComponent = ({ message }: ErrorMessageProps) => (
-  <div className={styles.errorMessage}>{message}</div>
+const ErrorMessageComponent = ({
+  message,
+  alignCenter = false,
+}: ErrorMessageProps) => (
+  <div className={styles.errorMessage} data-align-center={alignCenter}>
+    {message}
+  </div>
 );
 
 ErrorMessageComponent.displayName = "ErrorMessage";

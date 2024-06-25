@@ -2,3 +2,9 @@
   width: 100%;
   color: var(--red-a10);
 }
+
+.errorMessage {
+  &[data-align-center="true"] {
+    text-align: center;
+  }
+}

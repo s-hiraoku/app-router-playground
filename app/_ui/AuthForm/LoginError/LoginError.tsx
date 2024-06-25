@@ -20,7 +20,7 @@ export const LoginError: React.FC = () => {
     <>
       {urlError && (
         <Box>
-          <ErrorMessages errors={[urlError]} />
+          <ErrorMessages errors={[urlError]} alignCenter={true} />
         </Box>
       )}
     </>
