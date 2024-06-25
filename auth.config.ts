@@ -83,9 +83,11 @@ export const authConfig = {
           const passwordsMatch =
             user.password && (await bcrypt.compare(password, user.password));
           if (passwordsMatch) return user;
-          if (!passwordsMatch) throw new Error("Password is incorrect.");
+          if (!passwordsMatch) {
+            throw new Error("Login failed. Please check your credentials.");
+          }
         }
-        return null;
+        throw new Error("Login failed. Please check your credentials.");
       },
     }),
     Google({
