@@ -27,7 +27,7 @@
     "bcryptjs": "^2.4.3",
     "classnames": "^2.5.1",
     "jotai": "^2.6.3",
-    "next": "14.2.15",
+    "next": "14.2.18",
     "next-auth": "^5.0.0-beta.19",
     "next-themes": "^0.3.0",
     "react": "^18",
