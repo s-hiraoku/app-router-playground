@@ -47,7 +47,7 @@
     "@testing-library/jest-dom": "^6.2.1",
     "@testing-library/react": "^15.0.6",
     "@types/bcryptjs": "^2.4.6",
-    "@types/node": "^20",
+    "@types/node": "^22.0.0",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
@@ -71,7 +71,7 @@
     "vitest": "^2.0.0"
   },
   "volta": {
-    "node": "20.18.0"
+    "node": "22.11.0"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
